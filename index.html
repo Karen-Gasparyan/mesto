@@ -1,12 +1,157 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="./pages/index.css">
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mesto</title>
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
+  <body>
+    <div class="page">
+      <!--header-->
+      <header class="header page__header">
+        <div class="header__logo"></div>
+      </header>
+      <!--/header-->
+
+      <!--main-->
+      <main class="content page__content">
+        <!--profile-->
+        <div class="profile content__profile">
+          <div class="profile__avatar-wrapper">
+            <img
+              src="./images/avatar.jpg"
+              alt="Аватар"
+              class="profile__avatar"
+            />
+          </div>
+          <div class="profile__info">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button"></button>
+            <p class="profile__subtitile">Исследователь океана</p>
+          </div>
+          <button class="profile__add-button"></button>
+        </div>
+        <!--/profile-->
+
+        <!--elements-->
+        <section
+          class="elements content__elements"
+          aria-label="Карточки, с фотографиями мест"
+        >
+          <ul class="elements__list">
+            <li class="elements__item">
+              <figure class="elements__figure">
+                <img
+                  src="./images/Moscow.jpg"
+                  alt="Фотография - Собор Василия Блаженного"
+                  class="elements__image"
+                />
+                <figcaption class="elements__figcaption">
+                  <h2 class="elements__title">
+                    Москва - Собор Василия Блаженного
+                  </h2>
+                  <button class="elements__like"></button>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="elements__item">
+              <figure class="elements__figure">
+                <img
+                  src="./images/London.jpg"
+                  alt="Фотография - Биг Бэн"
+                  class="elements__image"
+                />
+                <figcaption class="elements__figcaption">
+                  <h2 class="elements__title">Лондон</h2>
+                  <button class="elements__like"></button>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="elements__item">
+              <figure class="elements__figure">
+                <img
+                  src="./images/NewYork.jpg"
+                  alt="Фотография - Нью Йорк"
+                  class="elements__image"
+                />
+                <figcaption class="elements__figcaption">
+                  <h2 class="elements__title">Нью Йорк</h2>
+                  <button class="elements__like"></button>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="elements__item">
+              <figure class="elements__figure">
+                <img
+                  src="./images/Paris.jpg"
+                  alt="Фотография - Эйфелева башня, Париж"
+                  class="elements__image"
+                />
+                <figcaption class="elements__figcaption">
+                  <h2 class="elements__title">Париж</h2>
+                  <button class="elements__like"></button>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="elements__item">
+              <figure class="elements__figure">
+                <img
+                  src="./images/Tokyo.jpg"
+                  alt="Фотография - Токио"
+                  class="elements__image"
+                />
+                <figcaption class="elements__figcaption">
+                  <h2 class="elements__title">Токио</h2>
+                  <button class="elements__like"></button>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="elements__item">
+              <figure class="elements__figure">
+                <img
+                  src="./images/Dubai.jpg"
+                  alt="Фотография - Дубаи"
+                  class="elements__image"
+                />
+                <figcaption class="elements__figcaption">
+                  <h2 class="elements__title">Дубаи</h2>
+                  <button class="elements__like"></button>
+                </figcaption>
+              </figure>
+            </li>
+          </ul>
+        </section>
+        <!--/elements-->
+      </main>
+      <!--/main-->
+
+      <!--footer-->
+      <footer class="footer page__footer">
+        <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+      </footer>
+      <!--/footer-->
+
+      <!--pop-up-->
+      <div class="pop-up">
+        <form class="pop-up__container">
+          <h3 class="pop-up__title">Редактировать профиль</h3>
+          <input
+            value=""
+            type="text"
+            class="pop-up__input-text pop-up__input-text_type_name"
+          />
+          <input
+            value=""
+            type="text"
+            class="pop-up__input-text pop-up__input-text_type_job"
+          />
+          <button type="submit" class="pop-up__save-btn">Сохранить</button>
+          <button class="pop-up__close-btn"></button>
+        </form>
+      </div>
+      <!--/pop-up-->
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>

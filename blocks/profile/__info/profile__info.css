@@ -1,0 +1,16 @@
+.profile__info {
+  min-width: 282px;
+  margin: 0 auto 36px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .profile__info {
+    margin: 0 0 0 30px;
+    max-width: 336px;
+    width: 100%;
+    align-self: center;
+  }
+}

@@ -1,0 +1,19 @@
+.profile__subtitile {
+  max-width: 100%;
+  margin: 0;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .profile__subtitile {
+    font-size: 18px;
+    line-height: 22px;
+    text-align: start;
+  }
+}
