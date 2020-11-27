@@ -1,6 +1,5 @@
 .profile__edit-button {
   background: url(../../../images/Edit-Button.svg) center / contain;
-  position: absolute;
   cursor: pointer;
   width: 18px;
   height: 18px;
@@ -20,7 +19,5 @@
   .profile__edit-button {
     width: 24px;
     height: 24px;
-    right: 0;
-    top: 15px;
   }
 }
