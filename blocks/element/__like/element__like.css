@@ -1,16 +1,16 @@
-.elements__like {
+.element__like {
   padding: 0;
   border: 0;
   outline: none;
   width: 20.76px;
   height: 18.13px;
-  background: url(../../../images/like-icon.png) center / contain no-repeat;
+  background: url(../../../images/like-icon.svg) center / cover no-repeat;
   cursor: pointer;
   transition: .5s;
 }
 
 @media (min-width: 1024px) {
-  .elements__like:hover {
+  .element__like:hover {
     opacity: .5;
   }
 }

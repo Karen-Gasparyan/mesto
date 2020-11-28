@@ -1,0 +1,8 @@
+.element__description-wrapper {
+  max-width: 246px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 0 auto 31px;
+}

@@ -15,6 +15,11 @@
 }
 
 @media (min-width: 1024px) {
+  .pop-up__save-btn {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
   .pop-up__save-btn:hover {
     opacity: 0.8;
     cursor: pointer;

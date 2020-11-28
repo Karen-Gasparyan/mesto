@@ -5,3 +5,10 @@
   color: #545454;
   margin: 0;
 }
+
+@media (min-width: 1024px) {
+  .footer__copyright {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}

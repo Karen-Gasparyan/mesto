@@ -14,17 +14,18 @@ let job = document.querySelector('.profile__subtitile');
 /*/variables*/
 
 /*popup*/
-editButton.addEventListener('click', function () {
+function openPopup() {
   popup.classList.add('popup_opened');
   nameInput.value = name.textContent;
   jobInput.value = job.textContent;
-});
+}
 
-closeBtn.addEventListener('click', function () {
+function closePopup() {
   popup.classList.remove('popup_opened');
-  nameInput.value = name.textContent;
-  jobInput.value = job.textContent;
-});
+}
+
+editButton.addEventListener('click', openPopup);
+closeBtn.addEventListener('click', closePopup);
 /*/popup*/
 
 /*form*/
@@ -33,7 +34,7 @@ function formSubmitHandler(evt) {
   name.textContent = nameInput.value;
   job.textContent = jobInput.value;
 
-  popup.classList.remove('popup_opened');
+  closePopup();
 }
 
 formElement.addEventListener('submit', formSubmitHandler);

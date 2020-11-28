@@ -6,7 +6,7 @@
     <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
-  <body>
+  <body class="body">
     <div class="page">
       <!--header-->
       <header class="header page__header">
@@ -17,7 +17,7 @@
       <!--main-->
       <main class="content page__content">
         <!--profile-->
-        <div class="profile content__profile">
+        <section class="profile content__profile">
           <div class="profile__wrapper">
             <div class="profile__avatar-wrapper">
               <img
@@ -28,12 +28,20 @@
             </div>
             <div class="profile__info">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
-              <button class="profile__edit-button"></button>
+              <button
+                type="button"
+                class="profile__edit-button"
+                aria-label="Кнопка - редактировать профиль"
+              ></button>
               <p class="profile__subtitile">Исследователь океана</p>
             </div>
           </div>
-          <button class="profile__add-button"></button>
-        </div>
+          <button
+            type="button"
+            class="profile__add-button"
+            aria-label="Кнопка - добавить карточку с изображением места"
+          ></button>
+        </section>
         <!--/profile-->
 
         <!--elements-->
@@ -41,90 +49,73 @@
           class="elements content__elements"
           aria-label="Карточки, с фотографиями мест"
         >
-          <ul class="elements__list">
-            <li class="elements__item">
-              <figure class="elements__figure">
-                <img
-                  src="./images/Moscow.jpg"
-                  alt="Фотография - Собор Василия Блаженного"
-                  class="elements__image"
-                />
-                <figcaption class="elements__figcaption">
-                  <h2 class="elements__title">
-                    Москва - Собор Василия Блаженного
-                  </h2>
-                  <button class="elements__like"></button>
-                </figcaption>
-              </figure>
-            </li>
-            <li class="elements__item">
-              <figure class="elements__figure">
-                <img
-                  src="./images/London.jpg"
-                  alt="Фотография - Биг Бэн"
-                  class="elements__image"
-                />
-                <figcaption class="elements__figcaption">
-                  <h2 class="elements__title">Лондон</h2>
-                  <button class="elements__like"></button>
-                </figcaption>
-              </figure>
-            </li>
-            <li class="elements__item">
-              <figure class="elements__figure">
-                <img
-                  src="./images/NewYork.jpg"
-                  alt="Фотография - Нью Йорк"
-                  class="elements__image"
-                />
-                <figcaption class="elements__figcaption">
-                  <h2 class="elements__title">Нью Йорк</h2>
-                  <button class="elements__like"></button>
-                </figcaption>
-              </figure>
-            </li>
-            <li class="elements__item">
-              <figure class="elements__figure">
-                <img
-                  src="./images/Paris.jpg"
-                  alt="Фотография - Эйфелева башня, Париж"
-                  class="elements__image"
-                />
-                <figcaption class="elements__figcaption">
-                  <h2 class="elements__title">Париж</h2>
-                  <button class="elements__like"></button>
-                </figcaption>
-              </figure>
-            </li>
-            <li class="elements__item">
-              <figure class="elements__figure">
-                <img
-                  src="./images/Tokyo.jpg"
-                  alt="Фотография - Токио"
-                  class="elements__image"
-                />
-                <figcaption class="elements__figcaption">
-                  <h2 class="elements__title">Токио</h2>
-                  <button class="elements__like"></button>
-                </figcaption>
-              </figure>
-            </li>
-            <li class="elements__item">
-              <figure class="elements__figure">
-                <img
-                  src="./images/Dubai.jpg"
-                  alt="Фотография - Дубаи"
-                  class="elements__image"
-                />
-                <figcaption class="elements__figcaption">
-                  <h2 class="elements__title">Дубаи</h2>
-                  <button class="elements__like"></button>
-                </figcaption>
-              </figure>
-            </li>
-          </ul>
+          <article class="element">
+            <img
+              src="./images/moscow.jpg"
+              alt="Фотография - Собор Василия Блаженного"
+              class="element__image"
+            />
+            <div class="element__description-wrapper">
+              <h2 class="element__title">Москва - Собор Василия Блаженного</h2>
+              <button type="submit" class="element__like"></button>
+            </div>
+          </article>
+          <article class="element">
+            <img
+              src="./images/london.jpg"
+              alt="Фотография - Биг Бэн"
+              class="element__image"
+            />
+            <div class="element__description-wrapper">
+              <h2 class="element__title">Лондон</h2>
+              <button type="submit" class="element__like"></button>
+            </div>
+          </article>
+          <article class="element">
+            <img
+              src="./images/newyork.jpg"
+              alt="Фотография - Нью Йорк"
+              class="element__image"
+            />
+            <div class="element__description-wrapper">
+              <h2 class="element__title">Нью Йорк</h2>
+              <button type="submit" class="element__like"></button>
+            </div>
+          </article>
+          <article class="element">
+            <img
+              src="./images/paris.jpg"
+              alt="Фотография - Эйфелева башня, Париж"
+              class="element__image"
+            />
+            <div class="element__description-wrapper">
+              <h2 class="element__title">Париж</h2>
+              <button type="submit" class="element__like"></button>
+            </div>
+          </article>
+          <article class="element">
+            <img
+              src="./images/tokyo.jpg"
+              alt="Фотография - Токио"
+              class="element__image"
+            />
+            <div class="element__description-wrapper">
+              <h2 class="element__title">Токио</h2>
+              <button type="submit" class="element__like"></button>
+            </div>
+          </article>
+          <article class="element">
+            <img
+              src="./images/dubai.jpg"
+              alt="Фотография - Дубаи"
+              class="element__image"
+            />
+            <div class="element__description-wrapper">
+              <h2 class="element__title">Дубаи</h2>
+              <button type="submit" class="element__like"></button>
+            </div>
+          </article>
         </section>
-        <!--/elements-->
       </main>
       <!--/main-->
 
@@ -136,24 +127,33 @@
 
       <!--pop-up-->
       <div class="pop-up">
-        <form class="pop-up__container">
-          <h3 class="pop-up__title">Редактировать профиль</h3>
-          <input
-            value=""
-            type="text"
-            class="pop-up__input-text pop-up__input-text_type_name"
-          />
-          <input
-            value=""
-            type="text"
-            class="pop-up__input-text pop-up__input-text_type_job"
-          />
-          <button type="submit" class="pop-up__save-btn">Сохранить</button>
-          <button class="pop-up__close-btn"></button>
-        </form>
+        <div class="pop-up__container">
+          <form class="pop-up__form" name="editProfile">
+            <h2 class="pop-up__title">Редактировать профиль</h2>
+            <input
+              name="username"
+              required
+              placeholder="Введите ваше имя"
+              value=""
+              type="text"
+              class="pop-up__input-text pop-up__input-text_type_name"
+            />
+            <input
+              name="userjob"
+              required
+              placeholder="Введите вашу специальность"
+              value=""
+              type="text"
+              class="pop-up__input-text pop-up__input-text_type_job"
+            />
+            <button type="submit" class="pop-up__save-btn">Сохранить</button>
+          </form>
+          <button type="button" class="pop-up__close-btn"></button>
+        </div>
       </div>
       <!--/pop-up-->
     </div>
-    <script src="script.js"></script>
+
+    <script src="./script/script.js"></script>
   </body>
 </html>
