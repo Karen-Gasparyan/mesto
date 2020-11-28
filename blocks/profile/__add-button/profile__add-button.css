@@ -9,19 +9,19 @@
   box-sizing: border-box;
   border-radius: 2px;
   color: #FFF;
-  cursor: pointer;
   transition: .5s;
-}
-
-.profile__add-button:hover {
-  opacity: .6;
 }
 
 @media (min-width: 1024px) {
   .profile__add-button {
+    cursor: pointer;
     margin: 0;
     align-self: center;
     width: 150px;
     background-size: 22px;
+  }
+
+  .profile__add-button:hover {
+    opacity: .6;
   }
 }

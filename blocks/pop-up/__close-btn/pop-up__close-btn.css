@@ -8,7 +8,7 @@
   width: 26px;
   height: 26px;
   transform: rotate(-45deg);
-  background: url(../../../images/close-icon.svg) center / cover;
+  background: url(../../../images/close-Icon.svg) center / cover;
   transition: .8s;
 }
 
