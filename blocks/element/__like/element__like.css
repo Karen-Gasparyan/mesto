@@ -4,7 +4,7 @@
   outline: none;
   width: 20.76px;
   height: 18.13px;
-  background: url(../../../images/like-icon.svg) center / cover no-repeat;
+  background: url(../../../images/like-icon.svg) center / contain no-repeat;
   transition: .5s;
 }
 
