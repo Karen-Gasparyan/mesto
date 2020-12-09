@@ -55,6 +55,7 @@
               alt="Фотография - Собор Василия Блаженного"
               class="element__image"
             />
+            <button type="button" class="element__deleted"></button>
             <div class="element__description-wrapper">
               <h2 class="element__title">Москва - Собор Василия Блаженного</h2>
               <button type="button" class="element__like"></button>
@@ -66,6 +67,7 @@
               alt="Фотография - Биг Бэн"
               class="element__image"
             />
+            <button type="button" class="element__deleted"></button>
             <div class="element__description-wrapper">
               <h2 class="element__title">Лондон</h2>
               <button type="button" class="element__like"></button>
@@ -77,6 +79,7 @@
               alt="Фотография - Нью Йорк"
               class="element__image"
             />
+            <button type="button" class="element__deleted"></button>
             <div class="element__description-wrapper">
               <h2 class="element__title">Нью Йорк</h2>
               <button type="button" class="element__like"></button>
@@ -88,6 +91,7 @@
               alt="Фотография - Эйфелева башня, Париж"
               class="element__image"
             />
+            <button type="button" class="element__deleted"></button>
             <div class="element__description-wrapper">
               <h2 class="element__title">Париж</h2>
               <button type="button" class="element__like"></button>
@@ -99,6 +103,7 @@
               alt="Фотография - Токио"
               class="element__image"
             />
+            <button type="button" class="element__deleted"></button>
             <div class="element__description-wrapper">
               <h2 class="element__title">Токио</h2>
               <button type="button" class="element__like"></button>
@@ -110,6 +115,7 @@
               alt="Фотография - Дубаи"
               class="element__image"
             />
+            <button type="button" class="element__deleted"></button>
             <div class="element__description-wrapper">
               <h2 class="element__title">Дубаи</h2>
               <button type="button" class="element__like"></button>
@@ -125,7 +131,7 @@
       </footer>
       <!--/footer-->
 
-      <!--pop-up-->
+      <!--pop-up profile edit-->
       <div class="pop-up">
         <div class="pop-up__container">
           <form class="pop-up__form" name="editProfile">
@@ -151,7 +157,36 @@
           <button type="button" class="pop-up__close-btn"></button>
         </div>
       </div>
-      <!--/pop-up-->
+      <!--/pop-up profile edit-->
+
+      <!--pop-up profile add-->
+      <div class="pop-up pop-up_img">
+        <div class="pop-up__container pop-up__container_img">
+          <form class="pop-up__form" name="editProfile">
+            <h2 class="pop-up__title pop-up__title_img">Новое место</h2>
+            <input
+              name="place-name"
+              required
+              placeholder="Название"
+              value=""
+              type="text"
+              class="pop-up__input-text pop-up__input-text_type_name pop-up-input-img"
+            />
+            <input
+              name="link-to-image"
+              required
+              placeholder="Ссылка на картинку"
+              value=""
+              type="text"
+              class="pop-up__input-text pop-up__input-text_type_job pop-up-input-img"
+            />
+            <button type="submit" class="pop-up__save-btn pop-up__save-btn_img">Создать</button>
+          </form>
+          <button type="button" class="pop-up__close-btn pop-up__close-btn_img"></button>
+        </div>
+      </div>
+      <!--/pop-up profile add-->
+
     </div>
 
     <script src="./script/script.js"></script>

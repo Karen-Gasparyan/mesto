@@ -1,0 +1,22 @@
+.element__deleted {
+  position: absolute;
+  outline: none;
+  padding: 0;
+  border: 0;
+  top: 18px;
+  right: 15px;
+  width: 18px;
+  height: 19.3px;
+  transition: .5s;
+  background: url(../../../images/deleted-icon.svg) center / contain no-repeat;
+}
+
+@media (min-width: 1024px) {
+  .element__deleted {
+    cursor: pointer;
+  }
+
+  .element__deleted:hover {
+    opacity: .6;
+  }
+}

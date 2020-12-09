@@ -1,0 +1,6 @@
+@media (max-width: 768px) {
+  .pop-up__save-btn_img {
+    max-width: 200px;
+    min-height: 40px;
+  }
+}

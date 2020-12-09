@@ -1,0 +1,12 @@
+@media (max-width: 768px) {
+  .pop-up-input-img {
+    margin-bottom: 20px;
+    font-size: 12px;
+    line-height: 15px;
+    padding-bottom: 12px;
+  }
+
+  .pop-up-input-img:last-of-type {
+    margin-bottom: 36px;
+  }
+}
