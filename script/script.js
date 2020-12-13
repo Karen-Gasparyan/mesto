@@ -68,7 +68,7 @@ function formSubmitHandler(evt) {
 /* cards */
 const INITIAL_CARDS = [{
     name: 'Москва - Собор Василия Блаженного',
-    src: 'https://github.com/Karen-Gasparyan/mesto/blob/main/images/moscow.jpg'
+    src: '../tree/main/images/moscow.jpg'
   },
   {
     name: 'Санкт Петербург',
