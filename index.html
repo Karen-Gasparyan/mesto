@@ -49,78 +49,7 @@
           class="elements content__elements"
           aria-label="Карточки, с фотографиями мест"
         >
-          <article class="element">
-            <img
-              src="./images/moscow.jpg"
-              alt="Фотография - Собор Василия Блаженного"
-              class="element__image"
-            />
-            <button type="button" class="element__deleted"></button>
-            <div class="element__description-wrapper">
-              <h2 class="element__title">Москва - Собор Василия Блаженного</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </article>
-          <article class="element">
-            <img
-              src="./images/london.jpg"
-              alt="Фотография - Биг Бэн"
-              class="element__image"
-            />
-            <button type="button" class="element__deleted"></button>
-            <div class="element__description-wrapper">
-              <h2 class="element__title">Лондон</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </article>
-          <article class="element">
-            <img
-              src="./images/newyork.jpg"
-              alt="Фотография - Нью Йорк"
-              class="element__image"
-            />
-            <button type="button" class="element__deleted"></button>
-            <div class="element__description-wrapper">
-              <h2 class="element__title">Нью Йорк</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </article>
-          <article class="element">
-            <img
-              src="./images/paris.jpg"
-              alt="Фотография - Эйфелева башня, Париж"
-              class="element__image"
-            />
-            <button type="button" class="element__deleted"></button>
-            <div class="element__description-wrapper">
-              <h2 class="element__title">Париж</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </article>
-          <article class="element">
-            <img
-              src="./images/tokyo.jpg"
-              alt="Фотография - Токио"
-              class="element__image"
-            />
-            <button type="button" class="element__deleted"></button>
-            <div class="element__description-wrapper">
-              <h2 class="element__title">Токио</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </article>
-          <article class="element">
-            <img
-              src="./images/dubai.jpg"
-              alt="Фотография - Дубаи"
-              class="element__image"
-            />
-            <button type="button" class="element__deleted"></button>
-            <div class="element__description-wrapper">
-              <h2 class="element__title">Дубаи</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </article>
+
         </section>
       </main>
       <!--/main-->
@@ -170,7 +99,7 @@
               placeholder="Название"
               value=""
               type="text"
-              class="pop-up__input-text pop-up__input-text_type_name pop-up-input-img"
+              class="pop-up__input-text pop-up__input-text_type_name pop-up__input-text_type_title pop-up-input-img"
             />
             <input
               name="link-to-image"
@@ -178,15 +107,36 @@
               placeholder="Ссылка на картинку"
               value=""
               type="text"
-              class="pop-up__input-text pop-up__input-text_type_job pop-up-input-img"
+              class="pop-up__input-text pop-up__input-text_type_job pop-up__input-text_type_link pop-up-input-img"
             />
-            <button type="submit" class="pop-up__save-btn pop-up__save-btn_img">Создать</button>
+            <button type="submit" class="pop-up__save-btn pop-up__save-btn_img">
+              Создать
+            </button>
           </form>
-          <button type="button" class="pop-up__close-btn pop-up__close-btn_img"></button>
+          <button
+            type="button"
+            class="pop-up__close-btn pop-up__close-btn_img"
+          ></button>
         </div>
       </div>
       <!--/pop-up profile add-->
 
+      <!--template-->
+      <template class="template-card">
+        <article class="element">
+          <img
+            src="./images/moscow.jpg"
+            alt="Карточка места"
+            class="element__image"
+          />
+          <button type="button" class="element__deleted"></button>
+          <div class="element__description-wrapper">
+            <h2 class="element__title"></h2>
+            <button type="button" class="element__like"></button>
+          </div>
+        </article>
+      </template>
+      <!--/template-->
     </div>
 
     <script src="./script/script.js"></script>
