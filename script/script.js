@@ -68,27 +68,27 @@ function formSubmitHandler(evt) {
 /* cards */
 const INITIAL_CARDS = [{
     name: 'Москва - Собор Василия Блаженного',
-    src: '/images/moscow.jpg'
+    src: 'https://github.com/Karen-Gasparyan/mesto/blob/main/images/moscow.jpg'
   },
   {
     name: 'Санкт Петербург',
-    src: '/images/saint-peterburg.jpg'
+    src: '../images/saint-peterburg.jpg'
   },
   {
     name: 'Великий Новгород',
-    src: '/images/velikiy-novgorod.jpg'
+    src: '../images/velikiy-novgorod.jpg'
   },
   {
     name: 'Сочи',
-    src: '/images/sochi.jpg'
+    src: '../images/sochi.jpg'
   },
   {
     name: 'Камчатка',
-    src: '/images/kamchatka.jpg'
+    src: '../images/kamchatka.jpg'
   },
   {
     name: 'Байкал',
-    src: '/images/baikal.jpg'
+    src: '../images/baikal.jpg'
   }
 ];
 
