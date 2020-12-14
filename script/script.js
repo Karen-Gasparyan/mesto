@@ -139,13 +139,13 @@ function deleteCard(evt) {
   targetCard.remove();
 }
 
-// open fullscreen popup!!!
+// open fullscreen popup
 function openPopupFullscreenImage(evt) {
-  const targetElement = evt.target;
+  const targetImage = evt.target;
   const imageFullscrean = document.querySelector('.pop-up__image-fullscreen');
-  imageFullscrean.src = targetElement.src;
+  imageFullscrean.src = targetImage.src;
   const captionFullscreen = document.querySelector('.pop-up__captiion-fullscreen');
-  captionFullscreen.textContent = targetElement.alt;
+  captionFullscreen.textContent = targetImage.alt;
   openPopup(popupFullscreen);
 }
 
