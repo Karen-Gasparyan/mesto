@@ -12,7 +12,7 @@
   transition: .8s;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .pop-up__close-btn {
     width: 40px;
     height: 40px;

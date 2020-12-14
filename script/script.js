@@ -22,6 +22,10 @@ const inputLink = popupImg.querySelector('.pop-up__input-text_type_link');
 // form add profile
 const formElementImg = popupImg.querySelector('.pop-up__form');
 
+// popup fullscreen
+const popupFullscreen = document.querySelector('.pop-up_fullscreen');
+const closeBtnFullscreenImg = popupFullscreen.querySelector('.pop-up__close-btn');
+
 // section (wrapper!)
 const containerElements = document.querySelector('.elements');
 
@@ -68,27 +72,27 @@ function formSubmitHandler(evt) {
 /* cards */
 const INITIAL_CARDS = [{
     name: 'Москва - Собор Василия Блаженного',
-    src: '../tree/main/images/moscow.jpg'
+    src: './images/moscow.jpg'
   },
   {
     name: 'Санкт Петербург',
-    src: '../images/saint-peterburg.jpg'
+    src: './images/saint-peterburg.jpg'
   },
   {
     name: 'Великий Новгород',
-    src: '../images/velikiy-novgorod.jpg'
+    src: './images/velikiy-novgorod.jpg'
   },
   {
     name: 'Сочи',
-    src: '../images/sochi.jpg'
+    src: './images/sochi.jpg'
   },
   {
     name: 'Камчатка',
-    src: '../images/kamchatka.jpg'
+    src: './images/kamchatka.jpg'
   },
   {
     name: 'Байкал',
-    src: '../images/baikal.jpg'
+    src: './images/baikal.jpg'
   }
 ];
 
@@ -137,10 +141,12 @@ function deleteCard(evt) {
 
 // open fullscreen popup!!!
 function openPopupFullscreenImage(evt) {
-  evt.target.classList.toggle('')
-  const popupFullscreen = document.querySelector('.pop-up_fullscreen');
+  const targetElement = evt.target;
+  const imageFullscrean = document.querySelector('.pop-up__image-fullscreen');
+  imageFullscrean.src = targetElement.src;
+  const captionFullscreen = document.querySelector('.pop-up__captiion-fullscreen');
+  captionFullscreen.textContent = targetElement.alt;
   openPopup(popupFullscreen);
-  //popupFullscreen.classList.add('pop-up_opened');
 }
 
 /* create new card */
@@ -185,6 +191,10 @@ closeBtn.addEventListener('click', () => {
 
 closeBtnImg.addEventListener('click', () => {
   closePopup(popupImg);
+});
+
+closeBtnFullscreenImg.addEventListener('click', () => {
+  closePopup(popupFullscreen);
 });
 
 formElement.addEventListener('submit', formSubmitHandler);
