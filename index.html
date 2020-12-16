@@ -64,7 +64,7 @@
           <form class="pop-up__form" name="editProfile">
             <h2 class="pop-up__title">Редактировать профиль</h2>
             <input
-              name="username"
+              name="user-name"
               required
               placeholder="Введите ваше имя"
               value=""
@@ -72,7 +72,7 @@
               class="pop-up__input-text pop-up__input-text_type_name"
             />
             <input
-              name="userjob"
+              name="user-job"
               required
               placeholder="Введите вашу специальность"
               value=""
@@ -81,23 +81,28 @@
             />
             <button type="submit" class="pop-up__save-btn">Сохранить</button>
           </form>
-          <button type="button" class="pop-up__close-btn"></button>
+          <button
+            type="button"
+            aria-label="Кнопка закрытия модального окна"
+            title="Закрыть"
+            class="pop-up__close-btn"
+          ></button>
         </div>
       </div>
       <!--/pop-up profile edit-->
 
       <!--pop-up profile add-->
       <div class="pop-up pop-up_img">
-        <div class="pop-up__container pop-up__container_img">
-          <form class="pop-up__form" name="editProfile">
-            <h2 class="pop-up__title pop-up__title_img">Новое место</h2>
+        <div class="pop-up__container">
+          <form class="pop-up__form pop-up__form_img" name="addProfile">
+            <h2 class="pop-up__title">Новое место</h2>
             <input
               name="place-name"
               required
               placeholder="Название"
               value=""
               type="text"
-              class="pop-up__input-text pop-up__input-text_type_name pop-up__input-text_type_title pop-up-input-img"
+              class="pop-up__input-text pop-up__input-text_type_name pop-up__input-text_type_title"
             />
             <input
               name="link-to-image"
@@ -105,7 +110,7 @@
               placeholder="Ссылка на картинку"
               value=""
               type="text"
-              class="pop-up__input-text pop-up__input-text_type_job pop-up__input-text_type_link pop-up-input-img"
+              class="pop-up__input-text pop-up__input-text_type_job pop-up__input-text_type_link"
             />
             <button type="submit" class="pop-up__save-btn pop-up__save-btn_img">
               Создать
@@ -113,6 +118,8 @@
           </form>
           <button
             type="button"
+            aria-label="Кнопка закрытия модального окна"
+            title="Закрыть"
             class="pop-up__close-btn pop-up__close-btn_img"
           ></button>
         </div>
@@ -123,13 +130,16 @@
       <div class="pop-up pop-up_fullscreen">
         <div class="pop-up__container-fullscreen">
           <img
-            src="./images/moscow.jpg"
+            src="./images/map-russia.jpg"
+            onError="src='./images/map-russia.jpg'"
             alt="Карточка места"
             class="pop-up__image-fullscreen"
           />
-          <p class="pop-up__captiion-fullscreen">Москва</p>
+          <p class="pop-up__captiion-fullscreen"></p>
           <button
             type="button"
+            aria-label="Кнопка закрытия модального окна"
+            title="Закрыть"
             class="pop-up__close-btn pop-up__close-btn_img"
           ></button>
         </div>
@@ -140,20 +150,32 @@
       <template class="template-card">
         <article class="element">
           <img
-            src="./images/moscow.jpg"
+            src="./images/map-russia.jpg"
+            onError="src='./images/map-russia.jpg'"
             alt="Карточка места"
             class="element__image"
           />
-          <button type="button" class="element__deleted"></button>
+          <button
+            type="button"
+            aria-label="Кнопка удаления карточки"
+            title="Удалить"
+            class="element__deleted"
+          ></button>
           <div class="element__description-wrapper">
             <h2 class="element__title"></h2>
-            <button type="button" class="element__like"></button>
+            <button
+              type="button"
+              aria-label="Кнопка с отметкой - нравится"
+              title="Нравится"
+              class="element__like"
+            ></button>
           </div>
         </article>
       </template>
       <!--/template-->
     </div>
 
-    <script src="./script/script.js"></script>
+    <script src="./js/INITIAL_CARDS.js"></script>
+    <script src="./js/index.js"></script>
   </body>
 </html>
