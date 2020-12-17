@@ -1,31 +1,33 @@
 /* variables */
 // popup edit profile
-const popup = document.querySelector('.pop-up');
+const popupEdit = document.querySelector('.pop-up_edit');
 const editBtn = document.querySelector('.profile__edit-button');
-const saveBtn = document.querySelector('.pop-up__save-btn');
-const closeBtn = document.querySelector('.pop-up__close-btn');
+const closeBtnEdit = popupEdit.querySelector('.pop-up__close-btn');
+// form edit profile
+const formElementEdit = popupEdit.querySelector('.pop-up__form');
+const nameInput = popupEdit.querySelector('.pop-up__input-text_type_name');
+const jobInput = popupEdit.querySelector('.pop-up__input-text_type_job');
+const profileName = document.querySelector('.profile__title');
+const profileJob = document.querySelector('.profile__subtitile');
+
 // popup add profile
 const popupImg = document.querySelector('.pop-up_img');
 const addBtnImg = document.querySelector('.profile__add-button');
 const closeBtnImg = popupImg.querySelector('.pop-up__close-btn');
-const saveBtnImg = popupImg.querySelector('.pop-up__save-btn_img');
 const inputTitle = popupImg.querySelector('.pop-up__input-text_type_title');
 const inputLink = popupImg.querySelector('.pop-up__input-text_type_link');
+// form add profile
+const formElementImg = popupImg.querySelector('.pop-up__form');
+
 // popup fullscreen
 const popupFullscreen = document.querySelector('.pop-up_fullscreen');
 const imageFullscrean = popupFullscreen.querySelector('.pop-up__image-fullscreen');
 const captionFullscreen = popupFullscreen.querySelector('.pop-up__captiion-fullscreen');
-const closeBtnFullscreenImg = popupFullscreen.querySelector('.pop-up__close-btn');
-// form edit profile
-const formElement = document.querySelector('.pop-up__form');
-const nameInput = document.querySelector('.pop-up__input-text_type_name');
-const jobInput = document.querySelector('.pop-up__input-text_type_job');
-const profileName = document.querySelector('.profile__title');
-const profileJob = document.querySelector('.profile__subtitile');
-// form add profile
-const formElementImg = popupImg.querySelector('.pop-up__form_img');
+const closeBtnFullscreen = popupFullscreen.querySelector('.pop-up__close-btn');
+
 // section (wrapper!)
 const containerElements = document.querySelector('.elements');
+
 // template
 const templateCard = document.querySelector('.template-card');
 /* /variables */
@@ -49,8 +51,8 @@ function formSubmitHandlerForPopupEditProfile(evt) {
   if (nameInput.value && jobInput.value) {
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    formElement.reset();
-    closePopup(popup);
+    formElementEdit.reset();
+    closePopup(popupEdit);
   }
 }
 
@@ -105,7 +107,7 @@ function composeCard(item) {
 
   // open fullscreen popup
   imageCard.addEventListener('click', () => {
-    openPopupFullscreenImage(item);
+    openPopupFullscreen(item);
   });
 
   return clonedСard;
@@ -124,8 +126,9 @@ function deleteCard(evt) {
 }
 
 // open fullscreen popup
-function openPopupFullscreenImage(item) {
+function openPopupFullscreen(item) {
   imageFullscrean.src = item.src;
+  imageFullscrean.alt = item.name;
   captionFullscreen.textContent = item.name;
   openPopup(popupFullscreen);
 }
@@ -135,13 +138,13 @@ renderList();
 /* listens to events */
 // edit profile
 editBtn.addEventListener('click', () => {
-  openPopup(popup);
   WriteInTheField();
+  openPopup(popupEdit);
 });
 
-closeBtn.addEventListener('click', () => {
-  formElement.reset();
-  closePopup(popup);
+closeBtnEdit.addEventListener('click', () => {
+  formElementEdit.reset();
+  closePopup(popupEdit);
 });
 
 // add profile
@@ -155,10 +158,10 @@ closeBtnImg.addEventListener('click', () => {
 });
 
 // fullscreen
-closeBtnFullscreenImg.addEventListener('click', () => {
+closeBtnFullscreen.addEventListener('click', () => {
   closePopup(popupFullscreen);
 });
 
-formElement.addEventListener('submit', formSubmitHandlerForPopupEditProfile);
+formElementEdit.addEventListener('submit', formSubmitHandlerForPopupEditProfile);
 formElementImg.addEventListener('submit', formSubmitHandlerForPopupAddProfile);
 /* /listens to events */

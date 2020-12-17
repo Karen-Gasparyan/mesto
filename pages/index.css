@@ -1,6 +1,6 @@
 /*general*/
 @import url(../vendor/normalize.css);
-@import url(../fonts/fonts.css);
+@import url(../vendor/fonts/fonts.css);
 @import url(../blocks/body/body.css);
 /*/general*/
 
@@ -69,9 +69,5 @@
 @import url(../blocks/pop-up/__captiion-fullscreen/pop-up__captiion-fullscreen.css);
 /*modifier*/
 @import url(../blocks/pop-up/_opened/pop-up_opened.css);
-@import url(../blocks/pop-up/_img/pop-up_img.css);
-@import url(../blocks/pop-up/__form/_img/pop-up__form_img.css);
-@import url(../blocks/pop-up/__save-btn/_img/pop-up__save-btn_img.css); /* no styles */
-@import url(../blocks/pop-up/__close-btn/_img/pop-up__close-btn_img.css); /* no styles */
 @import url();
 /*/pop-up*/
