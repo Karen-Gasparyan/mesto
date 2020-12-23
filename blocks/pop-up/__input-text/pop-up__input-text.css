@@ -1,5 +1,5 @@
 .pop-up__input-text {
-  max-width: 358px;
+  max-width: 100%;
   border: none;
   outline: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);

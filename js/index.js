@@ -36,11 +36,36 @@ const templateCard = document.querySelector('.template-card');
 /* popup */
 function openPopup(transmitted) {
   transmitted.classList.add('pop-up_opened');
+  document.addEventListener('keydown', escapeKeyHandler);
 }
 
 function closePopup(transmitted) {
   transmitted.classList.remove('pop-up_opened');
+  document.removeEventListener('keydown', escapeKeyHandler);
 }
+
+// closed by escape
+function escapeKeyHandler(evt) {
+  if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.pop-up_opened');
+    console.log('click');
+    if (popupOpened !== null) {
+      closePopup(popupOpened);
+    }
+  }
+}
+
+// closed by overlay!!!
+function overlayKeyHandler() {
+  document.addEventListener('click', function (evt, obj) {
+  const click = evt.target.classList.value;
+  if (click === 'pop-up pop-up_fullscreen pop-up_opened') {
+    closePopup(popupFullscreen);
+  }
+  //console.log(evt.target.classList.value);
+});
+}
+
 /* /popup */
 
 
@@ -159,6 +184,7 @@ closeBtnImg.addEventListener('click', () => {
 closeBtnFullscreen.addEventListener('click', () => {
   closePopup(popupFullscreen);
 });
+
 
 formElementEdit.addEventListener('submit', formSubmitHandlerForPopupEditProfile);
 formElementImg.addEventListener('submit', formSubmitHandlerForPopupAddProfile);
