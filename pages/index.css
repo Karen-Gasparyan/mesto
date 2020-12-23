@@ -59,15 +59,19 @@
 @import url(../blocks/pop-up/__container/pop-up__container.css);
 @import url(../blocks/pop-up/__form/pop-up__form.css);
 @import url(../blocks/pop-up/__title/pop-up__title.css);
+@import url(../blocks/pop-up/__input-wrapper/pop-up__input-wrapper.css);
 @import url(../blocks/pop-up/__input-text/pop-up__input-text.css);
 @import url(../blocks/pop-up/__save-btn/pop-up__save-btn.css);
 @import url(../blocks/pop-up/__close-btn/pop-up__close-btn.css);
+/*error*/
+@import url(../blocks/error/error.css);
 /*pop-up fullscreen*/
-@import url(../blocks/pop-up/_fullscreen/pop-up_fullscreen.css);/*modifier*/
 @import url(../blocks/pop-up/__container-fullscreen/pop-up__container-fullscreen.css);
 @import url(../blocks/pop-up/__image-fullscreen/pop-up__image-fullscreen.css);
 @import url(../blocks/pop-up/__captiion-fullscreen/pop-up__captiion-fullscreen.css);
 /*modifier*/
 @import url(../blocks/pop-up/_opened/pop-up_opened.css);
-@import url();
+@import url(../blocks/pop-up/_fullscreen/pop-up_fullscreen.css);
+@import url(../blocks/pop-up/__input-text/_state/pop-up__input-text_state_invalid.css);
+@import url(../blocks/pop-up/__save-btn/_invalid/pop-up__save-btn_invalid.css);
 /*/pop-up*/

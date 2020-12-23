@@ -6,13 +6,10 @@
   height: 18.13px;
   background: url(../../../images/like-icon.svg) center / contain no-repeat;
   transition: .5s;
+  cursor: pointer;
 }
 
 @media (min-width: 1024px) {
-  .element__like {
-    cursor: pointer;
-  }
-
   .element__like:hover {
     opacity: .5;
   }

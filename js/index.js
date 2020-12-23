@@ -48,28 +48,24 @@ function closePopup(transmitted) {
 // edit profile
 function formSubmitHandlerForPopupEditProfile(evt) {
   evt.preventDefault();
-  if (nameInput.value && jobInput.value) {
-    profileName.textContent = nameInput.value;
-    profileJob.textContent = jobInput.value;
-    formElementEdit.reset();
-    closePopup(popupEdit);
-  }
+  profileName.textContent = nameInput.value;
+  profileJob.textContent = jobInput.value;
+  formElementEdit.reset();
+  closePopup(popupEdit);
 }
 
 // add profile (add new card)
 function formSubmitHandlerForPopupAddProfile(evt) {
   evt.preventDefault();
-  if (inputTitle.value && inputLink.value) {
-    const inputText = inputTitle.value;
-    const inputImg = inputLink.value;
-    const newCardHTML = composeCard({
-      name: inputText,
-      src: inputImg
-    });
-    containerElements.prepend(newCardHTML);
-    formElementImg.reset();
-    closePopup(popupImg);
-  }
+  const inputText = inputTitle.value;
+  const inputImg = inputLink.value;
+  const newCardHTML = composeCard({
+    name: inputText,
+    src: inputImg
+  });
+  containerElements.prepend(newCardHTML);
+  formElementImg.reset();
+  closePopup(popupImg);
 }
 /* /forms handler */
 
@@ -139,6 +135,7 @@ renderList();
 // edit profile
 editBtn.addEventListener('click', () => {
   WriteInTheField();
+  //setEventListener(formElementEdit);
   openPopup(popupEdit);
 });
 
@@ -149,6 +146,7 @@ closeBtnEdit.addEventListener('click', () => {
 
 // add profile
 addBtnImg.addEventListener('click', () => {
+  //setEventListener(formElementImg);
   openPopup(popupImg);
 });
 
@@ -165,3 +163,5 @@ closeBtnFullscreen.addEventListener('click', () => {
 formElementEdit.addEventListener('submit', formSubmitHandlerForPopupEditProfile);
 formElementImg.addEventListener('submit', formSubmitHandlerForPopupAddProfile);
 /* /listens to events */
+
+//   ¯\_(ツ)_/¯   THE END...

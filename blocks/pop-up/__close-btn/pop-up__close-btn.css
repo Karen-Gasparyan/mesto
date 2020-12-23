@@ -10,6 +10,7 @@
   transform: rotate(-45deg);
   background: url(../../../images/close-Icon.svg) center / cover;
   transition: .8s;
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {
@@ -21,7 +22,6 @@
 
   .pop-up__close-btn:hover {
     opacity: 0.6;
-    cursor: pointer;
     border: transparent;
   }
 }

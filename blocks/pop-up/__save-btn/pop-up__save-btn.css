@@ -12,6 +12,7 @@
   text-align: center;
   color: #FFF;
   transition: .8s;
+  cursor: pointer;
 }
 
 @media (min-width: 1024px) {
@@ -23,6 +24,5 @@
 
   .pop-up__save-btn:hover {
     opacity: 0.8;
-    cursor: pointer;
   }
 }

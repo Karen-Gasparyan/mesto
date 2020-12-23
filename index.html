@@ -61,24 +61,36 @@
       <!--pop-up profile edit-->
       <div class="pop-up pop-up_edit">
         <div class="pop-up__container">
-          <form class="pop-up__form" name="editProfile">
+          <form class="pop-up__form" name="editProfile" novalidate>
             <h2 class="pop-up__title">Редактировать профиль</h2>
-            <input
-              name="user-name"
-              required
-              placeholder="Введите ваше имя"
-              value=""
-              type="text"
-              class="pop-up__input-text pop-up__input-text_type_name"
-            />
-            <input
-              name="user-job"
-              required
-              placeholder="Введите вашу специальность"
-              value=""
-              type="text"
-              class="pop-up__input-text pop-up__input-text_type_job"
-            />
+            <div class="pop-up__input-wrapper">
+              <input
+                name="name"
+                required
+                minlength="2"
+                maxlength="40"
+                autocomplete="off"
+                placeholder="Введите ваше имя"
+                type="text"
+                class="pop-up__input-text pop-up__input-text_type_name"
+                id="userName"
+              />
+              <span id="userName-error" class="error"></span>
+            </div>
+            <div class="pop-up__input-wrapper">
+              <input
+                name="job"
+                required
+                minlength="2"
+                maxlength="200"
+                autocomplete="off"
+                placeholder="Введите вашу специальность"
+                type="text"
+                class="pop-up__input-text pop-up__input-text_type_job"
+                id="userJob"
+              />
+              <span id="userJob-error" class="error"></span>
+            </div>
             <button type="submit" class="pop-up__save-btn">Сохранить</button>
           </form>
           <button
@@ -94,27 +106,35 @@
       <!--pop-up profile add-->
       <div class="pop-up pop-up_img">
         <div class="pop-up__container">
-          <form class="pop-up__form" name="addProfile">
+          <form class="pop-up__form" name="addProfile" novalidate>
             <h2 class="pop-up__title">Новое место</h2>
-            <input
-              name="place-name"
-              required
-              placeholder="Название"
-              value=""
-              type="text"
-              class="pop-up__input-text pop-up__input-text_type_title"
-            />
-            <input
-              name="link-to-image"
-              required
-              placeholder="Ссылка на картинку"
-              value=""
-              type="text"
-              class="pop-up__input-text pop-up__input-text_type_link"
-            />
-            <button type="submit" class="pop-up__save-btn">
-              Создать
-            </button>
+            <div class="pop-up__input-wrapper">
+              <input
+                name="place"
+                required
+                minlength="2"
+                maxlength="30"
+                autocomplete="off"
+                placeholder="Название"
+                type="text"
+                class="pop-up__input-text pop-up__input-text_type_title"
+                id="placeName"
+              />
+              <span id="placeName-error" class="error"></span>
+            </div>
+            <div class="pop-up__input-wrapper">
+              <input
+                name="linkToImage"
+                required
+                autocomplete="off"
+                placeholder="Ссылка на картинку"
+                type="url"
+                class="pop-up__input-text pop-up__input-text_type_link"
+                id="linkToImage"
+              />
+              <span id="linkToImage-error" class="error"></span>
+            </div>
+            <button type="submit" class="pop-up__save-btn">Создать</button>
           </form>
           <button
             type="button"
@@ -177,5 +197,6 @@
 
     <script src="./js/INITIAL_CARDS.js"></script>
     <script src="./js/index.js"></script>
+    <script src="./js/validate.js"></script>
   </body>
 </html>

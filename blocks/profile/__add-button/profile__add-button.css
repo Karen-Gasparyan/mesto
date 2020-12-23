@@ -8,13 +8,13 @@
   outline: none;
   box-sizing: border-box;
   border-radius: 2px;
+  cursor: pointer;
   color: #FFF;
   transition: .5s;
 }
 
 @media (min-width: 1024px) {
   .profile__add-button {
-    cursor: pointer;
     margin: 0;
     align-self: center;
     width: 150px;
