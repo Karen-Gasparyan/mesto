@@ -2,8 +2,7 @@
   background: url(../../../images/edit-button.svg) center / contain;
   width: 18px;
   height: 18px;
-  top: 8px;
-  right: 19px;
+  display: flex;
   padding: 0;
   border: none;
   outline: none;

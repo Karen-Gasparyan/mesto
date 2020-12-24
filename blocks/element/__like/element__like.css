@@ -1,4 +1,5 @@
 .element__like {
+  display: flex;
   padding: 0;
   border: 0;
   outline: none;

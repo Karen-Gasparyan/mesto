@@ -35,7 +35,6 @@ function setEventListener(form, config) {
   });
 }
 
-
 // button disablet (on/off)
 function setButtonState(button, isActive, config) {
   if (!isActive) {
@@ -46,7 +45,6 @@ function setButtonState(button, isActive, config) {
     button.disabled = false;
   }
 }
-
 
 // VALIDATION OF ALL FORMS
 function enableValidation(config) {
@@ -59,6 +57,7 @@ function enableValidation(config) {
   });
 }
 
+// CONFIG
 const validationConfig = {
   formSelector: '.pop-up__form',
   inputSelector: '.pop-up__input-text',
@@ -67,4 +66,4 @@ const validationConfig = {
   inputErrorClass: 'pop-up__input-text_state_invalid'
 };
 
-enableValidation(validationConfig);
+//   ¯\_(ツ)_/¯   THE END...

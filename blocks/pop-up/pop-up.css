@@ -11,4 +11,5 @@
   visibility: hidden;
   transition: .3s ease 0s;
   opacity: 0;
+  cursor: pointer;
 }

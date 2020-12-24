@@ -33,40 +33,40 @@ const templateCard = document.querySelector('.template-card');
 /* /variables */
 
 
-/* popup */
+/* popups */
 function openPopup(transmitted) {
   transmitted.classList.add('pop-up_opened');
   document.addEventListener('keydown', escapeKeyHandler);
+  document.addEventListener('mousedown', overlayKeyHandler);
+
+  // run validation (file: validate.js)
+  enableValidation(validationConfig);
 }
 
 function closePopup(transmitted) {
   transmitted.classList.remove('pop-up_opened');
   document.removeEventListener('keydown', escapeKeyHandler);
+  document.removeEventListener('mousedown', overlayKeyHandler);
 }
 
 // closed by escape
 function escapeKeyHandler(evt) {
   if (evt.key === 'Escape') {
     const popupOpened = document.querySelector('.pop-up_opened');
-    console.log('click');
     if (popupOpened !== null) {
       closePopup(popupOpened);
     }
   }
 }
 
-// closed by overlay!!!
-function overlayKeyHandler() {
-  document.addEventListener('click', function (evt, obj) {
-  const click = evt.target.classList.value;
-  if (click === 'pop-up pop-up_fullscreen pop-up_opened') {
-    closePopup(popupFullscreen);
+// closed by overlay
+function overlayKeyHandler(evt) {
+  const popupOpened = document.querySelector('.pop-up_opened');
+  if (evt.target === popupOpened) {
+    closePopup(popupOpened);
   }
-  //console.log(evt.target.classList.value);
-});
 }
-
-/* /popup */
+/* /popups */
 
 
 /* forms handler */
@@ -96,7 +96,7 @@ function formSubmitHandlerForPopupAddProfile(evt) {
 
 
 // edit profile write form values
-function WriteInTheField() {
+function writeInTheField() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
 }
@@ -154,13 +154,11 @@ function openPopupFullscreen(item) {
   openPopup(popupFullscreen);
 }
 
-renderList();
 
 /* listens to events */
 // edit profile
 editBtn.addEventListener('click', () => {
-  WriteInTheField();
-  //setEventListener(formElementEdit);
+  writeInTheField();
   openPopup(popupEdit);
 });
 
@@ -171,7 +169,6 @@ closeBtnEdit.addEventListener('click', () => {
 
 // add profile
 addBtnImg.addEventListener('click', () => {
-  //setEventListener(formElementImg);
   openPopup(popupImg);
 });
 
@@ -189,5 +186,7 @@ closeBtnFullscreen.addEventListener('click', () => {
 formElementEdit.addEventListener('submit', formSubmitHandlerForPopupEditProfile);
 formElementImg.addEventListener('submit', formSubmitHandlerForPopupAddProfile);
 /* /listens to events */
+
+renderList();
 
 //   ¯\_(ツ)_/¯   THE END...
