@@ -38,9 +38,6 @@ function openPopup(transmitted) {
   transmitted.classList.add('pop-up_opened');
   document.addEventListener('keydown', escapeKeyHandler);
   document.addEventListener('mousedown', overlayKeyHandler);
-
-  // run validation (file: validate.js)
-  enableValidation(validationConfig);
 }
 
 function closePopup(transmitted) {
@@ -75,7 +72,6 @@ function formSubmitHandlerForPopupEditProfile(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
-  formElementEdit.reset();
   closePopup(popupEdit);
 }
 

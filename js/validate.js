@@ -66,4 +66,7 @@ const validationConfig = {
   inputErrorClass: 'pop-up__input-text_state_invalid'
 };
 
+  // run validation
+  enableValidation(validationConfig);
+
 //   ¯\_(ツ)_/¯   THE END...
