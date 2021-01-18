@@ -1,95 +1,87 @@
+import {
+  Card,
+  popupFullscreen,
+} from './Card.js';
+
+import {
+  openPopup,
+  closePopup
+} from './utils.js';
+
+import {
+  validationConfig,
+  FormValidator
+} from './FormValidator.js';
+
 /* variables */
 // popup edit profile
-const popupEdit = document.querySelector('.pop-up_edit');
-const editBtn = document.querySelector('.profile__edit-button');
-const closeBtnEdit = popupEdit.querySelector('.pop-up__close-btn');
-// form edit profile
-const formElementEdit = popupEdit.querySelector('.pop-up__form');
-const nameInput = popupEdit.querySelector('.pop-up__input-text_type_name');
-const jobInput = popupEdit.querySelector('.pop-up__input-text_type_job');
-const profileName = document.querySelector('.profile__title');
-const profileJob = document.querySelector('.profile__subtitile');
+const popupEdit = document.querySelector('.pop-up_edit'),
+  editBtn = document.querySelector('.profile__edit-button'),
+  closeBtnEdit = popupEdit.querySelector('.pop-up__close-btn'),
+  // popup add profile
+  popupImg = document.querySelector('.pop-up_img'),
+  addBtnImg = document.querySelector('.profile__add-button'),
+  closeBtnImg = popupImg.querySelector('.pop-up__close-btn'),
+  inputTitle = popupImg.querySelector('.pop-up__input-text_type_title'),
+  inputLink = popupImg.querySelector('.pop-up__input-text_type_link'),
+  // popup fullscreen
+  closeBtnFullscreen = popupFullscreen.querySelector('.pop-up__close-btn'),
+  // form edit profile
+  formElementEdit = popupEdit.querySelector('.pop-up__form'),
+  nameInput = popupEdit.querySelector('.pop-up__input-text_type_name'),
+  jobInput = popupEdit.querySelector('.pop-up__input-text_type_job'),
+  profileName = document.querySelector('.profile__title'),
+  profileJob = document.querySelector('.profile__subtitile'),
+  // form add profile
+  formElementImg = popupImg.querySelector('.pop-up__form'),
+  // section (wrapper!)
+  containerElements = document.querySelector('.elements');
 
-// popup add profile
-const popupImg = document.querySelector('.pop-up_img');
-const addBtnImg = document.querySelector('.profile__add-button');
-const closeBtnImg = popupImg.querySelector('.pop-up__close-btn');
-const inputTitle = popupImg.querySelector('.pop-up__input-text_type_title');
-const inputLink = popupImg.querySelector('.pop-up__input-text_type_link');
-// form add profile
-const formElementImg = popupImg.querySelector('.pop-up__form');
-
-// popup fullscreen
-const popupFullscreen = document.querySelector('.pop-up_fullscreen');
-const imageFullscrean = popupFullscreen.querySelector('.pop-up__image-fullscreen');
-const captionFullscreen = popupFullscreen.querySelector('.pop-up__captiion-fullscreen');
-const closeBtnFullscreen = popupFullscreen.querySelector('.pop-up__close-btn');
-
-// section (wrapper!)
-const containerElements = document.querySelector('.elements');
-
-// template
-const templateCard = document.querySelector('.template-card');
+const INITIAL_CARDS = [{
+    name: 'Москва - Собор Василия Блаженного',
+    src: './images/moscow.jpg'
+  },
+  {
+    name: 'Санкт Петербург',
+    src: './images/saint-peterburg.jpg'
+  },
+  {
+    name: 'Великий Новгород',
+    src: './images/velikiy-novgorod.jpg'
+  },
+  {
+    name: 'Сочи',
+    src: './images/sochi.jpg'
+  },
+  {
+    name: 'Камчатка',
+    src: './images/kamchatka.jpg'
+  },
+  {
+    name: 'Байкал',
+    src: './images/baikal.jpg'
+  }
+];
 /* /variables */
 
-
-/* popups */
-function openPopup(transmitted) {
-  transmitted.classList.add('pop-up_opened');
-  document.addEventListener('keydown', escapeKeyHandler);
-  document.addEventListener('mousedown', overlayKeyHandler);
-}
-
-function closePopup(transmitted) {
-  transmitted.classList.remove('pop-up_opened');
-  document.removeEventListener('keydown', escapeKeyHandler);
-  document.removeEventListener('mousedown', overlayKeyHandler);
-}
-
-// closed by escape
-function escapeKeyHandler(evt) {
-  if (evt.key === 'Escape') {
-    const popupOpened = document.querySelector('.pop-up_opened');
-    if (popupOpened !== null) {
-      closePopup(popupOpened);
-    }
-  }
-}
-
-// closed by overlay
-function overlayKeyHandler(evt) {
-  const popupOpened = document.querySelector('.pop-up_opened');
-  if (evt.target === popupOpened) {
-    closePopup(popupOpened);
-  }
-}
-/* /popups */
-
-
-/* forms handler */
-// edit profile
-function formSubmitHandlerForPopupEditProfile(evt) {
-  evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
-  closePopup(popupEdit);
-}
-
-// add profile (add new card)
-function formSubmitHandlerForPopupAddProfile(evt) {
-  evt.preventDefault();
-  const inputText = inputTitle.value;
-  const inputImg = inputLink.value;
-  const newCardHTML = composeCard({
-    name: inputText,
-    src: inputImg
+const runValidation = () => {
+  const allForms = document.querySelectorAll('.pop-up__form');
+  allForms.forEach(form => {
+    const formValidation = new FormValidator(validationConfig, form);
+    formValidation.enableValidation();
   });
-  containerElements.prepend(newCardHTML);
-  formElementImg.reset();
-  closePopup(popupImg);
-}
-/* /forms handler */
+};
 
+const renderElements = () => {
+  INITIAL_CARDS.forEach(item => {
+    const newCard = new Card(item, '.template-card');
+    const cardElement = newCard.generateCard();
+    containerElements.append(cardElement);
+  });
+};
+
+renderElements();
+runValidation();
 
 // edit profile write form values
 function writeInTheField() {
@@ -97,59 +89,28 @@ function writeInTheField() {
   jobInput.value = profileJob.textContent;
 }
 
-
-// RENDER LIST
-function renderList() {
-  const listItems = INITIAL_CARDS.map(composeCard);
-  containerElements.append(...listItems);
+/* forms handlers */
+function formSubmitHandlerForPopupEditProfile(e) {
+  e.preventDefault();
+  profileName.textContent = nameInput.value;
+  profileJob.textContent = jobInput.value;
+  closePopup(popupEdit);
 }
 
+function formSubmitHandlerForPopupAddProfile(e) {
+  e.preventDefault();
+  const inputText = inputTitle.value;
+  const inputImg = inputLink.value;
+  const addNewCardToHTML = new Card({
+    name: inputText,
+    src: inputImg,
+  }, '.template-card').generateCard();
 
-/* add INITIAL CARDS */
-function composeCard(item) {
-  const clonedСard = templateCard.content.cloneNode(true);
-  const titleCard = clonedСard.querySelector('.element__title');
-  titleCard.textContent = item.name;
-  const imageCard = clonedСard.querySelector('.element__image');
-  imageCard.alt = item.name;
-  imageCard.src = item.src;
-
-  // add & remove like
-  const likeButton = clonedСard.querySelector('.element__like');
-  likeButton.addEventListener('click', switchOfLike);
-
-  // delete card
-  const deleteButton = clonedСard.querySelector('.element__deleted');
-  deleteButton.addEventListener('click', deleteCard);
-
-  // open fullscreen popup
-  imageCard.addEventListener('click', () => {
-    openPopupFullscreen(item);
-  });
-
-  return clonedСard;
+  containerElements.prepend(addNewCardToHTML);
+  formElementImg.reset();
+  closePopup(popupImg);
 }
-/* /add initial cards */
-
-
-// add & remove like
-function switchOfLike(evt) {
-  evt.target.classList.toggle('element__like_active');
-}
-
-// delete card
-function deleteCard(evt) {
-  evt.target.closest('.element').remove();
-}
-
-// open fullscreen popup
-function openPopupFullscreen(item) {
-  imageFullscrean.src = item.src;
-  imageFullscrean.alt = item.name;
-  captionFullscreen.textContent = item.name;
-  openPopup(popupFullscreen);
-}
-
+/* /forms handlers */
 
 /* listens to events */
 // edit profile
@@ -165,6 +126,7 @@ closeBtnEdit.addEventListener('click', () => {
 
 // add profile
 addBtnImg.addEventListener('click', () => {
+  runValidation();
   openPopup(popupImg);
 });
 
@@ -173,16 +135,13 @@ closeBtnImg.addEventListener('click', () => {
   closePopup(popupImg);
 });
 
-// fullscreen
 closeBtnFullscreen.addEventListener('click', () => {
   closePopup(popupFullscreen);
 });
 
-
+// submit
 formElementEdit.addEventListener('submit', formSubmitHandlerForPopupEditProfile);
 formElementImg.addEventListener('submit', formSubmitHandlerForPopupAddProfile);
 /* /listens to events */
-
-renderList();
 
 //   ¯\_(ツ)_/¯   THE END...
