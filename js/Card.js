@@ -18,10 +18,6 @@ export class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._element.querySelector('.element__title').textContent = this._name;
-
-    // Про поиск элемента ('.element__image'); Вы написали -
-    //(Чаще всего это удобно сделать в Конструкторе и тогда эти переменные будут доступны по всему коду класса.)
-    // ('.element__title') генерируется позже, как я могу найти ее в конструкторе, до ее геннерации?
     this._cardImage = this._element.querySelector('.element__image');
     this._cardImage.src = this._src;
     this._cardImage.alt = this._name;
@@ -40,7 +36,7 @@ export class Card {
 
   _setEventListeners() {
     this._cardImage.addEventListener('click', () => {
-      this._handleCardClick();
+      this._handleCardClick(this._name, this._src);
     });
 
     this._element.querySelector('.element__deleted').addEventListener('click', (e) => {

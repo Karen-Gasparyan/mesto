@@ -4,9 +4,7 @@ import {
 
 import {
   openPopup,
-  closePopup,
-  escapeKeyHandler,
-  overlayKeyHandler
+  closePopup
 } from './utils.js';
 
 import {
@@ -69,25 +67,16 @@ const INITIAL_CARDS = [{
 /* /variables */
 
 // popup fullscreen
-function handleCardClick(item) {
-  const {
-    src,
-    name
-  } = item;
+function handleCardClick(name, src) {
   imagePopupPicture.src = src;
   imagePopupPicture.alt = name;
   imagePopupCaption.textContent = name;
-  popupFullscreen.classList.add('pop-up_opened');
-  document.addEventListener('keydown', escapeKeyHandler);
-  document.addEventListener('mousedown', overlayKeyHandler);
   openPopup(popupFullscreen);
 }
 
 /* compose card and validation */
 function createCard(item) {
-  // есть ли принципиальная разница - handleCardClick.bind(this, item)
-  // и, если бы я передавал параметры в классе Card, в - this._handleCardClick(this._name, this._src); ???
-  const newCard = new Card(item, '.template-card', handleCardClick.bind(this, item));
+  const newCard = new Card(item, '.template-card', handleCardClick);
   return newCard.generateCard();
 }
 
@@ -141,7 +130,7 @@ function writeInTheField() {
 // edit profile
 editBtn.addEventListener('click', () => {
   profileValidator.resetValidation();
-  profileValidator.enableValidation();
+  // profileValidator.enableValidation();
   writeInTheField();
   openPopup(popupEdit);
 });
@@ -153,7 +142,10 @@ closeBtnEdit.addEventListener('click', () => {
 // add profile
 addBtnImg.addEventListener('click', () => {
   addCardValidator.resetValidation();
-  addCardValidator.enableValidation();
+  // addCardValidator.enableValidation(); - если убрать эту "повторную" активацию то,
+  // после добавлении новой карточки, при клике еще раз на addBtnImg - 
+  // кнопка становится активной и позволяет добавлять пустые карточки.
+  // Спасибо за внятные комментарии! Все супер! ;) 
   openPopup(popupImg);
 });
 
