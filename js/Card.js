@@ -1,17 +1,9 @@
-import {
-  escapeKeyHandler,
-  overlayKeyHandler
-} from './utils.js';
-
-export const popupFullscreen = document.querySelector('.pop-up_fullscreen'),
-  imageFullscrean = document.querySelector('.pop-up__image-fullscreen'),
-  captionFullscreen = document.querySelector('.pop-up__captiion-fullscreen');
-
 export class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, handleCardClick) {
     this._name = data.name;
     this._src = data.src;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -25,9 +17,15 @@ export class Card {
 
   generateCard() {
     this._element = this._getTemplate();
-    this._setEventListeners();
     this._element.querySelector('.element__title').textContent = this._name;
-    this._element.querySelector('.element__image').src = this._src;
+
+    // Про поиск элемента ('.element__image'); Вы написали -
+    //(Чаще всего это удобно сделать в Конструкторе и тогда эти переменные будут доступны по всему коду класса.)
+    // ('.element__title') генерируется позже, как я могу найти ее в конструкторе, до ее геннерации?
+    this._cardImage = this._element.querySelector('.element__image');
+    this._cardImage.src = this._src;
+    this._cardImage.alt = this._name;
+    this._setEventListeners();
 
     return this._element;
   }
@@ -40,19 +38,9 @@ export class Card {
     e.target.classList.toggle('element__like_active');
   }
 
-  _openPopupFullscreen() {
-    imageFullscrean.src = this._src;
-    imageFullscrean.alt = this._name;
-    captionFullscreen.textContent = this._name;
-
-    popupFullscreen.classList.add('pop-up_opened');
-    document.addEventListener('keydown', escapeKeyHandler);
-    document.addEventListener('mousedown', overlayKeyHandler);
-  }
-
   _setEventListeners() {
-    this._element.querySelector('.element__image').addEventListener('click', () => {
-      this._openPopupFullscreen();
+    this._cardImage.addEventListener('click', () => {
+      this._handleCardClick();
     });
 
     this._element.querySelector('.element__deleted').addEventListener('click', (e) => {

@@ -1,11 +1,12 @@
 import {
-  Card,
-  popupFullscreen,
+  Card
 } from './Card.js';
 
 import {
   openPopup,
-  closePopup
+  closePopup,
+  escapeKeyHandler,
+  overlayKeyHandler
 } from './utils.js';
 
 import {
@@ -25,6 +26,9 @@ const popupEdit = document.querySelector('.pop-up_edit'),
   inputTitle = popupImg.querySelector('.pop-up__input-text_type_title'),
   inputLink = popupImg.querySelector('.pop-up__input-text_type_link'),
   // popup fullscreen
+  popupFullscreen = document.querySelector('.pop-up_fullscreen'),
+  imagePopupPicture = document.querySelector('.pop-up__image-fullscreen'),
+  imagePopupCaption = document.querySelector('.pop-up__captiion-fullscreen'),
   closeBtnFullscreen = popupFullscreen.querySelector('.pop-up__close-btn'),
   // form edit profile
   formElementEdit = popupEdit.querySelector('.pop-up__form'),
@@ -64,30 +68,44 @@ const INITIAL_CARDS = [{
 ];
 /* /variables */
 
-const runValidation = () => {
-  const allForms = document.querySelectorAll('.pop-up__form');
-  allForms.forEach(form => {
-    const formValidation = new FormValidator(validationConfig, form);
-    formValidation.enableValidation();
-  });
-};
+// popup fullscreen
+function handleCardClick(item) {
+  const {
+    src,
+    name
+  } = item;
+  imagePopupPicture.src = src;
+  imagePopupPicture.alt = name;
+  imagePopupCaption.textContent = name;
+  popupFullscreen.classList.add('pop-up_opened');
+  document.addEventListener('keydown', escapeKeyHandler);
+  document.addEventListener('mousedown', overlayKeyHandler);
+  openPopup(popupFullscreen);
+}
+
+/* compose card and validation */
+function createCard(item) {
+  // есть ли принципиальная разница - handleCardClick.bind(this, item)
+  // и, если бы я передавал параметры в классе Card, в - this._handleCardClick(this._name, this._src); ???
+  const newCard = new Card(item, '.template-card', handleCardClick.bind(this, item));
+  return newCard.generateCard();
+}
 
 const renderElements = () => {
   INITIAL_CARDS.forEach(item => {
-    const newCard = new Card(item, '.template-card');
-    const cardElement = newCard.generateCard();
+    const cardElement = createCard(item);
     containerElements.append(cardElement);
   });
 };
 
-renderElements();
-runValidation();
+const profileValidator = new FormValidator(validationConfig, formElementEdit);
+profileValidator.enableValidation();
 
-// edit profile write form values
-function writeInTheField() {
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
-}
+const addCardValidator = new FormValidator(validationConfig, formElementImg);
+addCardValidator.enableValidation();
+
+renderElements();
+/* /compose card and validation */
 
 /* forms handlers */
 function formSubmitHandlerForPopupEditProfile(e) {
@@ -101,10 +119,11 @@ function formSubmitHandlerForPopupAddProfile(e) {
   e.preventDefault();
   const inputText = inputTitle.value;
   const inputImg = inputLink.value;
-  const addNewCardToHTML = new Card({
+
+  const addNewCardToHTML = createCard({
     name: inputText,
     src: inputImg,
-  }, '.template-card').generateCard();
+  });
 
   containerElements.prepend(addNewCardToHTML);
   formElementImg.reset();
@@ -112,26 +131,33 @@ function formSubmitHandlerForPopupAddProfile(e) {
 }
 /* /forms handlers */
 
+// edit profile write form values
+function writeInTheField() {
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
+}
+
 /* listens to events */
 // edit profile
 editBtn.addEventListener('click', () => {
+  profileValidator.resetValidation();
+  profileValidator.enableValidation();
   writeInTheField();
   openPopup(popupEdit);
 });
 
 closeBtnEdit.addEventListener('click', () => {
-  formElementEdit.reset();
   closePopup(popupEdit);
 });
 
 // add profile
 addBtnImg.addEventListener('click', () => {
-  runValidation();
+  addCardValidator.resetValidation();
+  addCardValidator.enableValidation();
   openPopup(popupImg);
 });
 
 closeBtnImg.addEventListener('click', () => {
-  formElementImg.reset();
   closePopup(popupImg);
 });
 

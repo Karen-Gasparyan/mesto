@@ -14,6 +14,8 @@ export class FormValidator {
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._inputErrorClass = config.inputErrorClass;
     this._form = form;
+    this._inputList = this._form.querySelectorAll(this._inputSelector);
+    this._btn = this._form.querySelector(this._submitButtonSelector);
   }
 
   _showError() {
@@ -40,7 +42,6 @@ export class FormValidator {
 
   // button disablet (on/off)
   _setButtonState(isActive) {
-    this._btn = this._form.querySelector(this._submitButtonSelector);
     if (!isActive) {
       this._btn.classList.add(this._inactiveButtonClass);
       this._btn.disabled = true;
@@ -52,12 +53,20 @@ export class FormValidator {
 
   // create input list
   _setEventListener() {
-    this._inputList = this._form.querySelectorAll(this._inputSelector);
     this._inputList.forEach(input => {
       input.addEventListener('input', () => {
         this._checkInputValidity(input);
         this._setButtonState(this._form.checkValidity());
       });
+    });
+  }
+
+  resetValidation() {
+    this._inputList.forEach(input => {
+      const inputError = this._form.querySelector(`#${input.id}-error`);
+      inputError.textContent = '';
+      input.classList.remove(this._inputErrorClass);
+      this._form.reset();
     });
   }
 
