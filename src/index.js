@@ -1,1 +1,2 @@
-import '../pages/index.css'; // добавьте импорт главного файла стилей 
+import './index.css';
+import './js//index.js';
