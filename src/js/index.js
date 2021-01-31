@@ -142,10 +142,6 @@ closeBtnEdit.addEventListener('click', () => {
 // add profile
 addBtnImg.addEventListener('click', () => {
   addCardValidator.resetValidation();
-  // addCardValidator.enableValidation(); - если убрать эту "повторную" активацию то,
-  // после добавлении новой карточки, при клике еще раз на addBtnImg - 
-  // кнопка становится активной и позволяет добавлять пустые карточки.
-  // Спасибо за внятные комментарии! Все супер! ;) 
   openPopup(popupImg);
 });
 

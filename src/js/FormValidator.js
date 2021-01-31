@@ -62,12 +62,15 @@ export class FormValidator {
   }
 
   resetValidation() {
+    this._form.reset();
+
     this._inputList.forEach(input => {
       const inputError = this._form.querySelector(`#${input.id}-error`);
       inputError.textContent = '';
       input.classList.remove(this._inputErrorClass);
-      this._form.reset();
     });
+
+    this._setButtonState(this._form.checkValidity());
   }
 
   enableValidation() {
