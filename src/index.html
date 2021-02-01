@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
-    <link rel="stylesheet" href="index.css" />
+    <!-- disable on build -->
+    <link rel="stylesheet" href="./pages/index.css"/>
+    <!-- disable on build -->
   </head>
   <body class="body">
     <div class="page">
@@ -21,7 +23,7 @@
           <div class="profile__wrapper">
             <div class="profile__avatar-wrapper">
               <img
-                src="../images/avatar.jpg"
+                src="../src/images/avatar.jpg"
                 alt="Аватар"
                 class="profile__avatar"
               />
@@ -150,8 +152,8 @@
       <div class="pop-up pop-up_fullscreen">
         <div class="pop-up__container-fullscreen">
           <img
-            src="../images/map-russia.jpg"
-            onerror="src='../images/map-russia.jpg'"
+            src="../src/images/map-russia.jpg"
+            onerror="src='../src/images/map-russia.jpg'"
             alt="Карточка места"
             class="pop-up__image-fullscreen"
           />
@@ -170,8 +172,8 @@
       <template class="template-card">
         <article class="element">
           <img
-            src="../images/map-russia.jpg"
-            onerror="src='../images/map-russia.jpg'"
+            src="../src/images/map-russia.jpg"
+            onerror="src='../src/images/map-russia.jpg'"
             alt="Карточка места"
             class="element__image"
           />
@@ -195,9 +197,11 @@
       <!--/template-->
     </div>
     
-    <script type="module" src="js/index.js"></script>
-    <script type="module" src="js/Card.js"></script>
-    <script type="module" src="js/FormValidator.js"></script>
-    <script type="module" src="js/utils.js"></script>
+    <!-- disable on build -->
+    <script type="module" src="./scripts/index.js"></script>
+    <script type="module" src="./scripts/Card.js"></script>
+    <script type="module" src="./scripts/FormValidator.js"></script>
+    <script type="module" src="./scripts/utils.js"></script>
+    <!-- disable on build -->
   </body>
 </html>
