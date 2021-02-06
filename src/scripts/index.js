@@ -16,6 +16,10 @@ import {
 } from './PopupWithImage.js';
 
 import {
+  PopupWithForm
+} from './PopupWithForm.js';
+
+import {
   validationConfig,
   FormValidator
 } from './FormValidator.js';
@@ -28,8 +32,6 @@ import {
   addProfileInputTitle,
   addProfileInputLink,
   popupFullscreen,
-  imagePopupPicture,
-  imagePopupCaption,
   editFormElement,
   editProfileNameInput,
   editProfileJobInput,
@@ -44,8 +46,12 @@ import {
 /* Popups */
 const popupEditProfile = new Popup(popupEdit);
 const popupAddProfile = new Popup(popupAddImageCard);
-const popupFullscreenImage = new PopupWithImage();
+const popupFullscreenImage = new PopupWithImage(popupFullscreen);
 
+const editForm = new PopupWithForm(editFormElement, formSubmitHandlerEditProfile);
+const addForm = new PopupWithForm(addFormElement, formSubmitHandlerAddProfile);
+
+const userInfo = new UserInfo({userName: editProfileName, userJob: editProfileJob});
 
 // popup edit profile values
 function writeInTheField() {
@@ -55,10 +61,7 @@ function writeInTheField() {
 
 // popup fullscreen
 function handleCardClick(name, src) {
-  imagePopupPicture.src = src;
-  imagePopupPicture.alt = name;
-  imagePopupCaption.textContent = name;
-  popupFullscreenImage.open();
+  popupFullscreenImage.open(name, src);
 }
 /* /Popups */
 
@@ -122,18 +125,22 @@ buttonEditProfile.addEventListener('click', () => {
   editProfileValidator.resetValidation();
   writeInTheField();
   popupEditProfile.open();
+  editForm.setEventListeners();
 });
 
 buttonAddProfile.addEventListener('click', () => {
   addProfileValidator.resetValidation();
   popupAddProfile.open();
+  addForm.setEventListeners();
 });
 /* /listens to events */
 
 
+
+
 /* submit */
-editFormElement.addEventListener('submit', formSubmitHandlerEditProfile);
-addFormElement.addEventListener('submit', formSubmitHandlerAddProfile);
+// editFormElement.addEventListener('submit', formSubmitHandlerEditProfile);
+// addFormElement.addEventListener('submit', formSubmitHandlerAddProfile);
 /* /submit */
 
 //   ¯\_(ツ)_/¯   THE END...
