@@ -1,4 +1,24 @@
 // import '../pages/index.css'; // enable on build
+import {
+  Card
+} from './Card.js';
+
+import {
+  Section
+} from './Section.js';
+
+import {
+  Popup
+} from './Popup.js';
+
+import {
+  PopupWithImage
+} from './PopupWithImage.js';
+
+import {
+  validationConfig,
+  FormValidator
+} from './FormValidator.js';
 
 import {
   popupEdit,
@@ -20,28 +40,12 @@ import {
   INITIAL_CARDS
 } from './constants.js';
 
-import {
-  Card
-} from './Card.js';
-
-import {
-  Section
-} from './Section.js';
-
-import {
-  Popup
-} from './Popup.js';
-
-import {
-  validationConfig,
-  FormValidator
-} from './FormValidator.js';
-
 
 /* Popups */
 const popupEditProfile = new Popup(popupEdit);
 const popupAddProfile = new Popup(popupAddImageCard);
-const popupFullscreenImage = new Popup(popupFullscreen);
+const popupFullscreenImage = new PopupWithImage();
+
 
 // popup edit profile values
 function writeInTheField() {
