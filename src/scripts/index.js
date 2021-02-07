@@ -20,6 +20,10 @@ import {
 } from './PopupWithForm.js';
 
 import {
+  UserInfo
+} from './UserInfo.js';
+
+import {
   validationConfig,
   FormValidator
 } from './FormValidator.js';
@@ -51,12 +55,22 @@ const popupFullscreenImage = new PopupWithImage(popupFullscreen);
 const editForm = new PopupWithForm(editFormElement, formSubmitHandlerEditProfile);
 const addForm = new PopupWithForm(addFormElement, formSubmitHandlerAddProfile);
 
-const userInfo = new UserInfo({userName: editProfileName, userJob: editProfileJob});
+const userInfo = new UserInfo({
+  userName: editProfileName,
+  userJob: editProfileJob,
+  userNameInput: editProfileNameInput,
+  userJobInput: editProfileJobInput
+});
+
 
 // popup edit profile values
 function writeInTheField() {
-  editProfileNameInput.value = editProfileName.textContent;
-  editProfileJobInput.value = editProfileJob.textContent;
+  const {
+    name,
+    job
+  } = userInfo.getUserInfo();
+  editProfileNameInput.value = name;
+  editProfileJobInput.value = job;
 }
 
 // popup fullscreen
@@ -98,8 +112,7 @@ addProfileValidator.enableValidation();
 /* forms handlers */
 function formSubmitHandlerEditProfile(e) {
   e.preventDefault();
-  editProfileName.textContent = editProfileNameInput.value;
-  editProfileJob.textContent = editProfileJobInput.value;
+  userInfo.setUserInfo();
   popupEditProfile.close();
 }
 
@@ -134,13 +147,5 @@ buttonAddProfile.addEventListener('click', () => {
   addForm.setEventListeners();
 });
 /* /listens to events */
-
-
-
-
-/* submit */
-// editFormElement.addEventListener('submit', formSubmitHandlerEditProfile);
-// addFormElement.addEventListener('submit', formSubmitHandlerAddProfile);
-/* /submit */
 
 //   ¯\_(ツ)_/¯   THE END...

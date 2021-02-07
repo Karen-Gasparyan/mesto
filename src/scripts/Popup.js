@@ -24,7 +24,7 @@ export class Popup {
     }
   }
 
-  _handleOverlayClose(e) {
+  _handleOverlayClose = (e) => {
     if (e.target === e.currentTarget) {
       this.close();
     }
