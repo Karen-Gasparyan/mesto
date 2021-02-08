@@ -1,4 +1,4 @@
-import '../pages/index.css'; // enable on npm run build
+// import '../pages/index.css'; // enable on npm run build
 
 import {
   Card
