@@ -1,4 +1,4 @@
-// import '../pages/index.css'; // enable on npm run build
+import '../pages/index.css'; // enable on npm run build
 
 import {
   Card
@@ -40,8 +40,6 @@ import {
   editFormElement,
   editProfileNameInput,
   editProfileJobInput,
-  editProfileName,
-  editProfileJob,
   addFormElement,
   containerElements,
   INITIAL_CARDS
@@ -50,10 +48,8 @@ import {
 
 /* USER INFO */
 const userInfo = new UserInfo({
-  userName: editProfileName,
-  userJob: editProfileJob,
-  userNameInput: editProfileNameInput,
-  userJobInput: editProfileJobInput
+  userName: '.profile__title',
+  userjob: '.profile__subtitile'
 });
 /* /USER INFO */
 
@@ -115,7 +111,7 @@ cardsList.renderItems();
 /* FORMS HANDLERS */
 function formSubmitHandlerEditProfile(e) {
   e.preventDefault();
-  userInfo.setUserInfo();
+  userInfo.setUserInfo(editProfileNameInput.value, editProfileJobInput.value,);
   popupEditProfile.close();
 }
 

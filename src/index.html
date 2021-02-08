@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
     <!-- disable on npm run build -->
-    <link rel="stylesheet" href="./pages/index.css" />
+    <!-- <link rel="stylesheet" href="./pages/index.css" /> -->
     <!-- /disable on npm run build -->
   </head>
   <body class="body">
@@ -148,12 +148,15 @@
       </div>
       <!--/pop-up profile add-->
 
-      <!--pop-up fullscreen-->
+      <!--*** pop-up fullscreen-->
       <div class="pop-up pop-up_fullscreen">
         <div class="pop-up__container-fullscreen">
+          <!-- ***insert src for img before npm run buld*** -->
+          <!-- src="<%=require('./images/map-russia.jpg')%>" -->
+          <!-- onerror="src='<%=require(`./images/map-russia.jpg`)%>'" -->
           <img
-            src="../src/images/map-russia.jpg"
-            onerror="src='../src/images/map-russia.jpg'"
+            src="<%=require('./images/map-russia.jpg')%>"
+            onerror="src='<%=require(`./images/map-russia.jpg`)%>'"
             alt="Карточка места"
             class="pop-up__image-fullscreen"
           />
@@ -168,12 +171,15 @@
       </div>
       <!--/pop-up fullscreen-->
 
-      <!--template-->
+      <!--*** template-->
       <template class="template-card">
         <article class="element">
+          <!-- ***insert src for img before npm run buld*** -->
+          <!-- src="<%=require('./images/map-russia.jpg')%>" -->
+          <!-- onerror="src='<%=require(`./images/map-russia.jpg`)%>'" -->
           <img
-            src="../src/images/map-russia.jpg"
-            onerror="src='../src/images/map-russia.jpg'"
+            src="<%=require('./images/map-russia.jpg')%>"
+            onerror="src='<%=require(`./images/map-russia.jpg`)%>'"
             alt="Карточка места"
             class="element__image"
           />
@@ -197,8 +203,8 @@
       <!--/template-->
     </div>
 
-    <!-- disable on npm run build -->
-    <script type="module" src="./scripts/index.js"></script>
+    <!--disable on npm run build -->
+    <!-- <script type="module" src="./scripts/index.js"></script> -->
     <!-- /disable on npm run build -->
   </body>
 </html>
