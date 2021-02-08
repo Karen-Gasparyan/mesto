@@ -22,27 +22,27 @@ export const popupEdit = document.querySelector('.pop-up_edit'),
 
   INITIAL_CARDS = [{
       name: 'Москва - Собор Василия Блаженного',
-      src: '../../src/images/moscow.jpg'
+      src: './images/moscow.jpg'
     },
     {
       name: 'Санкт Петербург',
-      src: '../../src/images/saint-peterburg.jpg'
+      src: './images/saint-peterburg.jpg'
     },
     {
       name: 'Великий Новгород',
-      src: '../../src/images/velikiy-novgorod.jpg'
+      src: './images/velikiy-novgorod.jpg'
     },
     {
       name: 'Сочи',
-      src: '../../src/images/sochi.jpg'
+      src: './images/sochi.jpg'
     },
     {
       name: 'Камчатка',
-      src: '../../src/images/kamchatka.jpg'
+      src: './images/kamchatka.jpg'
     },
     {
       name: 'Байкал',
-      src: '../../src/images/baikal.jpg'
+      src: './images/baikal.jpg'
     }
   ];
 
