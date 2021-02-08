@@ -45,3 +45,6 @@ export const popupEdit = document.querySelector('.pop-up_edit'),
       src: '../../src/images/baikal.jpg'
     }
   ];
+
+
+  //   ¯\_(ツ)_/¯   THE END...

@@ -28,3 +28,6 @@ export class PopupWithForm extends Popup {
     this._form.reset();
   }
 }
+
+
+//   ¯\_(ツ)_/¯   THE END...

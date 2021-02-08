@@ -5,7 +5,7 @@ import {
 import {
   imagePopupPicture,
   imagePopupCaption
-} from './constants.js';
+} from '../constants.js';
 
 export class PopupWithImage extends Popup {
   constructor(popupSelector) {
@@ -19,3 +19,6 @@ export class PopupWithImage extends Popup {
     imagePopupCaption.textContent = name;
   }
 }
+
+
+//   ¯\_(ツ)_/¯   THE END...

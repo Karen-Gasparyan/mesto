@@ -1,32 +1,33 @@
-// import '../pages/index.css'; // enable on build
+// import '../pages/index.css'; // enable on npm run build
+
 import {
   Card
-} from './Card.js';
+} from './components/Card.js';
 
 import {
   Section
-} from './Section.js';
+} from './components/Section.js';
 
 import {
   Popup
-} from './Popup.js';
+} from './components/Popup.js';
 
 import {
   PopupWithImage
-} from './PopupWithImage.js';
+} from './components/PopupWithImage.js';
 
 import {
   PopupWithForm
-} from './PopupWithForm.js';
+} from './components/PopupWithForm.js';
 
 import {
   UserInfo
-} from './UserInfo.js';
+} from './components/UserInfo.js';
 
 import {
   validationConfig,
   FormValidator
-} from './FormValidator.js';
+} from './components/FormValidator.js';
 
 import {
   popupEdit,
@@ -47,21 +48,23 @@ import {
 } from './constants.js';
 
 
-/* Popups */
-const popupEditProfile = new Popup(popupEdit);
-const popupAddProfile = new Popup(popupAddImageCard);
-const popupFullscreenImage = new PopupWithImage(popupFullscreen);
-
-const editForm = new PopupWithForm(editFormElement, formSubmitHandlerEditProfile);
-const addForm = new PopupWithForm(addFormElement, formSubmitHandlerAddProfile);
-
+/* USER INFO */
 const userInfo = new UserInfo({
   userName: editProfileName,
   userJob: editProfileJob,
   userNameInput: editProfileNameInput,
   userJobInput: editProfileJobInput
 });
+/* /USER INFO */
 
+
+/* POPUPS */
+const popupEditProfile = new Popup(popupEdit);
+const popupAddProfile = new Popup(popupAddImageCard);
+const popupFullscreenImage = new PopupWithImage(popupFullscreen);
+
+const editForm = new PopupWithForm(editFormElement, formSubmitHandlerEditProfile);
+const addForm = new PopupWithForm(addFormElement, formSubmitHandlerAddProfile);
 
 // popup edit profile values
 function writeInTheField() {
@@ -73,14 +76,23 @@ function writeInTheField() {
   editProfileJobInput.value = job;
 }
 
-// popup fullscreen
+// popup fullscreen open
 function handleCardClick(name, src) {
   popupFullscreenImage.open(name, src);
 }
-/* /Popups */
+/* /POPUPS */
 
 
-/* compose card */
+/* VALIDATION */
+const editProfileValidator = new FormValidator(validationConfig, editFormElement);
+editProfileValidator.enableValidation();
+
+const addProfileValidator = new FormValidator(validationConfig, addFormElement);
+addProfileValidator.enableValidation();
+/* /VALIDATION */
+
+
+/* COMPOSE CARD */
 function createCard(item) {
   const newCard = new Card(item, '.template-card', handleCardClick);
   return newCard.generateCard();
@@ -97,19 +109,10 @@ const cardsList = new Section({
 );
 
 cardsList.renderItems();
-/* /compose card */
+/* /COMPOSE CARD */
 
 
-/* validation */
-const editProfileValidator = new FormValidator(validationConfig, editFormElement);
-editProfileValidator.enableValidation();
-
-const addProfileValidator = new FormValidator(validationConfig, addFormElement);
-addProfileValidator.enableValidation();
-/* /validation */
-
-
-/* forms handlers */
+/* FORMS HANDLERS */
 function formSubmitHandlerEditProfile(e) {
   e.preventDefault();
   userInfo.setUserInfo();
@@ -130,10 +133,10 @@ function formSubmitHandlerAddProfile(e) {
   addFormElement.reset();
   popupAddProfile.close();
 }
-/* /forms handlers */
+/* /FORMS HANDLERS */
 
 
-/* listens to events */
+/* LISTENS TO EVENTS */
 buttonEditProfile.addEventListener('click', () => {
   editProfileValidator.resetValidation();
   writeInTheField();
@@ -146,6 +149,7 @@ buttonAddProfile.addEventListener('click', () => {
   popupAddProfile.open();
   addForm.setEventListeners();
 });
-/* /listens to events */
+/* /LISTENS TO EVENTS */
+
 
 //   ¯\_(ツ)_/¯   THE END...

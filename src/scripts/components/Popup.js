@@ -2,19 +2,20 @@ export class Popup {
   constructor(popupSelector) {
     this._popup = popupSelector;
     this._popupButton = this._popup.querySelector('.pop-up__close-btn');
+    this.close = this.close.bind(this);
   }
 
   open() {
     this._popup.classList.add('pop-up_opened');
-    this._popup.addEventListener('mousedown', this._handleOverlayClose.bind(this));
+    this._popup.addEventListener('mousedown', this._handleOverlayClose);
     document.addEventListener('keydown', this._handleEscClose);
     this.setEventListeners();
   }
 
   close() {
     this._popup.classList.remove('pop-up_opened');
-    this._popupButton.removeEventListener('click', this.close.bind(this));
-    this._popup.removeEventListener('mousedown', this._handleOverlayClose.bind(this));
+    this._popupButton.removeEventListener('click', this.close);
+    this._popup.removeEventListener('mousedown', this._handleOverlayClose);
     document.removeEventListener('keydown', this._handleEscClose);
   }
 
@@ -31,6 +32,9 @@ export class Popup {
   }
 
   setEventListeners() {
-    this._popupButton.addEventListener('click', this.close.bind(this));
+    this._popupButton.addEventListener('click', this.close);
   }
 }
+
+
+//   ¯\_(ツ)_/¯   THE END...

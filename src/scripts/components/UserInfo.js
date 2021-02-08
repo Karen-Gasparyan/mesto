@@ -18,3 +18,6 @@ export class UserInfo {
     this._userJob.textContent = this._userJobInput.value;
   }
 }
+
+
+//   ¯\_(ツ)_/¯   THE END...
