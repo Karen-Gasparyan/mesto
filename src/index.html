@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
     <!-- disable on npm run build -->
-    <link rel="stylesheet" href="./pages/index.css" />
+    <!-- <link rel="stylesheet" href="./pages/index.css" /> -->
     <!-- /disable on npm run build -->
   </head>
   <body class="body">
@@ -23,7 +23,7 @@
           <div class="profile__wrapper">
             <div class="profile__avatar-wrapper">
               <img
-                src="../src/images/avatar.jpg"
+                src="<%=require('./images/avatar.jpg')%>"
                 alt="Аватар"
                 class="profile__avatar"
               />
@@ -56,7 +56,7 @@
 
       <!--footer-->
       <footer class="footer page__footer">
-        <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+        <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
       </footer>
       <!--/footer-->
 
@@ -155,8 +155,8 @@
           <!-- src="<%=require('./images/map-russia.jpg')%>" -->
           <!-- onerror="src='<%=require(`./images/map-russia.jpg`)%>'" -->
           <img
-            src="./images/map-russia.jpg"
-            onerror="src='./images/map-russia.jpg'"
+            src="<%=require('./images/map-russia.jpg')%>"
+            onerror="src='<%=require(`./images/map-russia.jpg`)%>'"
             alt="Карточка места"
             class="pop-up__image-fullscreen"
           />
@@ -178,8 +178,8 @@
           <!-- src="<%=require('./images/map-russia.jpg')%>" -->
           <!-- onerror="src='<%=require(`./images/map-russia.jpg`)%>'" -->
           <img
-            src="./images/map-russia.jpg"
-            onerror="src='./images/map-russia.jpg'"
+            src="<%=require('./images/map-russia.jpg')%>"
+            onerror="src='<%=require(`./images/map-russia.jpg`)%>'"
             alt="Карточка места"
             class="element__image"
           />
@@ -204,7 +204,7 @@
     </div>
 
     <!--disable on npm run build -->
-    <script type="module" src="./scripts/index.js"></script>
+    <!-- <script type="module" src="./scripts/index.js"></script> -->
     <!-- /disable on npm run build -->
   </body>
 </html>

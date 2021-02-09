@@ -18,33 +18,40 @@ export const popupEdit = document.querySelector('.pop-up_edit'),
   // form add profile
   addFormElement = popupAddImageCard.querySelector('.pop-up__form'),
   // section (wrapper!)
-  containerElements = document.querySelector('.elements'),
+  containerElements = document.querySelector('.elements');
 
-  INITIAL_CARDS = [{
-      name: 'Москва - Собор Василия Блаженного',
-      src: './images/moscow.jpg'
-    },
-    {
-      name: 'Санкт Петербург',
-      src: './images/saint-peterburg.jpg'
-    },
-    {
-      name: 'Великий Новгород',
-      src: './images/velikiy-novgorod.jpg'
-    },
-    {
-      name: 'Сочи',
-      src: './images/sochi.jpg'
-    },
-    {
-      name: 'Камчатка',
-      src: './images/kamchatka.jpg'
-    },
-    {
-      name: 'Байкал',
-      src: './images/baikal.jpg'
-    }
-  ];
+import moscow from '../images/moscow.jpg';
+import saintPeterburg from '../images/saint-peterburg.jpg';
+import velikiyNovgorod from '../images/velikiy-novgorod.jpg';
+import sochi from '../images/sochi.jpg';
+import kamchatka from '../images/kamchatka.jpg';
+import baikal from '../images/baikal.jpg';
+
+export const INITIAL_CARDS = [{
+    name: 'Москва - Собор Василия Блаженного',
+    src: moscow
+  },
+  {
+    name: 'Санкт Петербург',
+    src: saintPeterburg
+  },
+  {
+    name: 'Великий Новгород',
+    src: velikiyNovgorod
+  },
+  {
+    name: 'Сочи',
+    src: sochi
+  },
+  {
+    name: 'Камчатка',
+    src: kamchatka
+  },
+  {
+    name: 'Байкал',
+    src: baikal
+  }
+];
 
 
   //   ¯\_(ツ)_/¯   THE END...
