@@ -7,8 +7,6 @@ export const popupEdit = document.querySelector('.pop-up_edit'),
   addProfileInputLink = popupAddImageCard.querySelector('.pop-up__input-text_type_link'),
   // popup fullscreen
   popupFullscreen = document.querySelector('.pop-up_fullscreen'),
-  imagePopupPicture = document.querySelector('.pop-up__image-fullscreen'),
-  imagePopupCaption = document.querySelector('.pop-up__captiion-fullscreen'),
   // form edit profile
   editFormElement = popupEdit.querySelector('.pop-up__form'),
   editProfileNameInput = popupEdit.querySelector('.pop-up__input-text_type_name'),
@@ -20,36 +18,36 @@ export const popupEdit = document.querySelector('.pop-up_edit'),
   // section (wrapper!)
   containerElements = document.querySelector('.elements');
 
-import moscow from '../images/moscow.jpg';
-import saintPeterburg from '../images/saint-peterburg.jpg';
-import velikiyNovgorod from '../images/velikiy-novgorod.jpg';
-import sochi from '../images/sochi.jpg';
-import kamchatka from '../images/kamchatka.jpg';
-import baikal from '../images/baikal.jpg';
+// import moscow from '../images/moscow.jpg';
+// import saintPeterburg from '../images/saint-peterburg.jpg';
+// import velikiyNovgorod from '../images/velikiy-novgorod.jpg';
+// import sochi from '../images/sochi.jpg';
+// import kamchatka from '../images/kamchatka.jpg';
+// import baikal from '../images/baikal.jpg';
 
 export const INITIAL_CARDS = [{
     name: 'Москва - Собор Василия Блаженного',
-    src: moscow
+    src: '../../src/images/moscow.jpg'
   },
   {
     name: 'Санкт Петербург',
-    src: saintPeterburg
+    src: '../../src/images/saint-peterburg.jpg'
   },
   {
     name: 'Великий Новгород',
-    src: velikiyNovgorod
+    src: '../../src/images/velikiy-novgorod.jpg'
   },
   {
     name: 'Сочи',
-    src: sochi
+    src: '../../src/images/sochi.jpg'
   },
   {
     name: 'Камчатка',
-    src: kamchatka
+    src: '../../src/images/kamchatka.jpg'
   },
   {
     name: 'Байкал',
-    src: baikal
+    src: '../../src/images/baikal.jpg'
   }
 ];
 

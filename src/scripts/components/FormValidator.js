@@ -65,9 +65,8 @@ export class FormValidator {
     this._form.reset();
 
     this._inputList.forEach(input => {
-      const inputError = this._form.querySelector(`#${input.id}-error`);
-      inputError.textContent = '';
-      input.classList.remove(this._inputErrorClass);
+      this._input = input;
+      this._hideError();
     });
 
     this._setButtonState(this._form.checkValidity());

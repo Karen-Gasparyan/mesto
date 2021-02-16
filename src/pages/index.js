@@ -1,49 +1,40 @@
-import '../pages/index.css'; // enable on npm run build
+// import './index.css'; // enable on npm run build
 
 import {
   Card
-} from './components/Card.js';
+} from '../scripts/components/Card.js';
 
 import {
   Section
-} from './components/Section.js';
-
-import {
-  Popup
-} from './components/Popup.js';
+} from '../scripts/components/Section.js';
 
 import {
   PopupWithImage
-} from './components/PopupWithImage.js';
+} from '../scripts/components/PopupWithImage.js';
 
 import {
   PopupWithForm
-} from './components/PopupWithForm.js';
+} from '../scripts/components/PopupWithForm.js';
 
 import {
   UserInfo
-} from './components/UserInfo.js';
+} from '../scripts/components/UserInfo.js';
 
 import {
   validationConfig,
   FormValidator
-} from './components/FormValidator.js';
+} from '../scripts/components/FormValidator.js';
 
 import {
-  popupEdit,
   buttonEditProfile,
-  popupAddImageCard,
   buttonAddProfile,
-  addProfileInputTitle,
-  addProfileInputLink,
-  popupFullscreen,
   editFormElement,
+  addFormElement,
   editProfileNameInput,
   editProfileJobInput,
-  addFormElement,
   containerElements,
   INITIAL_CARDS
-} from './constants.js';
+} from '../scripts/constants.js';
 
 
 /* USER INFO */
@@ -55,12 +46,14 @@ const userInfo = new UserInfo({
 
 
 /* POPUPS */
-const popupEditProfile = new Popup(popupEdit);
-const popupAddProfile = new Popup(popupAddImageCard);
-const popupFullscreenImage = new PopupWithImage(popupFullscreen);
+const editForm = new PopupWithForm('.pop-up_edit', handleEditProfile);
+editForm.setEventListeners();
 
-const editForm = new PopupWithForm(editFormElement, formSubmitHandlerEditProfile);
-const addForm = new PopupWithForm(addFormElement, formSubmitHandlerAddProfile);
+const addForm = new PopupWithForm('.pop-up_img', handleAddProfile);
+addForm.setEventListeners();
+
+const popupWithImage = new PopupWithImage('.pop-up_fullscreen');
+popupWithImage.setEventListeners();
 
 // popup edit profile values
 function writeInTheField() {
@@ -74,7 +67,7 @@ function writeInTheField() {
 
 // popup fullscreen open
 function handleCardClick(name, src) {
-  popupFullscreenImage.open(name, src);
+  popupWithImage.open(name, src);
 }
 /* /POPUPS */
 
@@ -109,25 +102,22 @@ cardsList.renderItems();
 
 
 /* FORMS HANDLERS */
-function formSubmitHandlerEditProfile(e) {
+function handleEditProfile(e, data) {
   e.preventDefault();
-  userInfo.setUserInfo(editProfileNameInput.value, editProfileJobInput.value,);
-  popupEditProfile.close();
+  userInfo.setUserInfo(data.name, data.job);
+  editForm.close();
 }
 
-function formSubmitHandlerAddProfile(e) {
+function handleAddProfile(e, data) {
   e.preventDefault();
-  const inputText = addProfileInputTitle.value;
-  const inputImg = addProfileInputLink.value;
 
   const addNewCardToHTML = createCard({
-    name: inputText,
-    src: inputImg,
+    name: data.place,
+    src: data.linkToImage
   });
 
-  containerElements.prepend(addNewCardToHTML);
-  addFormElement.reset();
-  popupAddProfile.close();
+  cardsList.addNewItem(addNewCardToHTML);
+  addForm.close();
 }
 /* /FORMS HANDLERS */
 
@@ -136,14 +126,12 @@ function formSubmitHandlerAddProfile(e) {
 buttonEditProfile.addEventListener('click', () => {
   editProfileValidator.resetValidation();
   writeInTheField();
-  popupEditProfile.open();
-  editForm.setEventListeners();
+  editForm.open();
 });
 
 buttonAddProfile.addEventListener('click', () => {
   addProfileValidator.resetValidation();
-  popupAddProfile.open();
-  addForm.setEventListeners();
+  addForm.open();
 });
 /* /LISTENS TO EVENTS */
 
