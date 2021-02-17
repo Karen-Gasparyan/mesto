@@ -18,36 +18,36 @@ export const popupEdit = document.querySelector('.pop-up_edit'),
   // section (wrapper!)
   containerElements = document.querySelector('.elements');
 
-// import moscow from '../images/moscow.jpg';
-// import saintPeterburg from '../images/saint-peterburg.jpg';
-// import velikiyNovgorod from '../images/velikiy-novgorod.jpg';
-// import sochi from '../images/sochi.jpg';
-// import kamchatka from '../images/kamchatka.jpg';
-// import baikal from '../images/baikal.jpg';
+import moscow from '../images/moscow.jpg';
+import saintPeterburg from '../images/saint-peterburg.jpg';
+import velikiyNovgorod from '../images/velikiy-novgorod.jpg';
+import sochi from '../images/sochi.jpg';
+import kamchatka from '../images/kamchatka.jpg';
+import baikal from '../images/baikal.jpg';
 
 export const INITIAL_CARDS = [{
     name: 'Москва - Собор Василия Блаженного',
-    src: '../../src/images/moscow.jpg'
+    src: moscow
   },
   {
     name: 'Санкт Петербург',
-    src: '../../src/images/saint-peterburg.jpg'
+    src: saintPeterburg
   },
   {
     name: 'Великий Новгород',
-    src: '../../src/images/velikiy-novgorod.jpg'
+    src: velikiyNovgorod
   },
   {
     name: 'Сочи',
-    src: '../../src/images/sochi.jpg'
+    src: sochi
   },
   {
     name: 'Камчатка',
-    src: '../../src/images/kamchatka.jpg'
+    src: kamchatka
   },
   {
     name: 'Байкал',
-    src: '../../src/images/baikal.jpg'
+    src: baikal
   }
 ];
 
