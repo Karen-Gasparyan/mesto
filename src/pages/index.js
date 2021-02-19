@@ -4,21 +4,6 @@ import {
   Api
 } from '../scripts/components/Api.js';
 
-
-const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-20',
-  headers: {
-    authorization: 'e4e57aba-b1e6-4fc1-8294-ad6d7d0fcf8d',
-    'Content-Type': 'application/json'
-  }
-}); 
-
-console.log(api.getUserInfo());
-console.log(api.getInitialCards());
-console.log(api.getCard());
-
-
-
 import {
   Card
 } from '../scripts/components/Card.js';
@@ -54,7 +39,6 @@ import {
   editProfileNameInput,
   editProfileJobInput,
   containerElements,
-  INITIAL_CARDS
 } from '../scripts/constants.js';
 
 
@@ -108,24 +92,34 @@ editAvatarValidator.enableValidation();
 /* /VALIDATION */
 
 
-/* COMPOSE CARD */
+/* DOWNLOAD CARDS */
+const downloadСards = new Api({
+  url: 'https://mesto.nomoreparties.co/v1/cohort-20/cards/',
+  headers: {
+    authorization: 'e4e57aba-b1e6-4fc1-8294-ad6d7d0fcf8d',
+    'Content-Type': 'application/json'
+  }
+});
+
+downloadСards.getInitialCards()
+.then((data) => {
+    const cardsList = new Section({
+      items: data,
+      renderer: (item) => {
+        const cardElement = createCard(item);
+        cardsList.addItem(cardElement);
+      },
+    },
+    containerElements
+  );
+  cardsList.renderItems();
+})
+
 function createCard(item) {
   const newCard = new Card(item, '.template-card', handleCardClick);
   return newCard.generateCard();
 }
-
-const cardsList = new Section({
-    items: INITIAL_CARDS,
-    renderer: (item) => {
-      const cardElement = createCard(item);
-      cardsList.addItem(cardElement);
-    },
-  },
-  containerElements
-);
-
-cardsList.renderItems();
-/* /COMPOSE CARD */
+/* /DOWNLOAD CARDS */
 
 
 /* FORMS HANDLERS */
