@@ -1,4 +1,23 @@
-import './index.css'; // enable on npm run build
+// import './index.css'; // enable on npm run build
+
+import {
+  Api
+} from '../scripts/components/Api.js';
+
+
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-20',
+  headers: {
+    authorization: 'e4e57aba-b1e6-4fc1-8294-ad6d7d0fcf8d',
+    'Content-Type': 'application/json'
+  }
+}); 
+
+console.log(api.getUserInfo());
+console.log(api.getInitialCards());
+console.log(api.getCard());
+
+
 
 import {
   Card
@@ -26,10 +45,12 @@ import {
 } from '../scripts/components/FormValidator.js';
 
 import {
+  profileEditAvatar,
   buttonEditProfile,
   buttonAddProfile,
   editFormElement,
   addFormElement,
+  editAvatarFormElement,
   editProfileNameInput,
   editProfileJobInput,
   containerElements,
@@ -51,6 +72,9 @@ editForm.setEventListeners();
 
 const addForm = new PopupWithForm('.pop-up_img', handleAddProfile);
 addForm.setEventListeners();
+
+const popupChangeAvatar = new PopupWithForm('.pop-up_change-avatar', handleEditAvatar);
+popupChangeAvatar.setEventListeners();
 
 const popupWithImage = new PopupWithImage('.pop-up_fullscreen');
 popupWithImage.setEventListeners();
@@ -78,6 +102,9 @@ editProfileValidator.enableValidation();
 
 const addProfileValidator = new FormValidator(validationConfig, addFormElement);
 addProfileValidator.enableValidation();
+
+const editAvatarValidator = new FormValidator(validationConfig, editAvatarFormElement);
+editAvatarValidator.enableValidation();
 /* /VALIDATION */
 
 
@@ -119,10 +146,21 @@ function handleAddProfile(e, data) {
   cardsList.addNewItem(addNewCardToHTML);
   addForm.close();
 }
+
+function handleEditAvatar(e) {
+  e.preventDefault();
+
+  popupChangeAvatar.close();
+}
 /* /FORMS HANDLERS */
 
 
 /* LISTENS TO EVENTS */
+profileEditAvatar.addEventListener('click', () => {
+  editAvatarValidator.resetValidation();
+  popupChangeAvatar.open();
+});
+
 buttonEditProfile.addEventListener('click', () => {
   editProfileValidator.resetValidation();
   writeInTheField();

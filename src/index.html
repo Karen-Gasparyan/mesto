@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
     <!-- disable on npm run build -->
-    <!-- <link rel="stylesheet" href="./pages/index.css" /> -->
+    <link rel="stylesheet" href="./pages/index.css" />
     <!-- /disable on npm run build -->
   </head>
   <body class="body">
@@ -25,10 +25,11 @@
               <!-- ***insert src for img before npm run buld*** -->
               <!-- src="<%=require('./images/avatar.jpg')%>" -->
               <img
-                src="<%=require('./images/avatar.jpg')%>"
+                src="./images/avatar.jpg"
                 alt="Аватар"
                 class="profile__avatar"
               />
+              <div class="profile__edit-avatar"></div>
             </div>
             <div class="profile__info">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -157,8 +158,8 @@
           <!-- src="<%=require('./images/map-russia.jpg')%>" -->
           <!-- onerror="src='<%=require(`./images/map-russia.jpg`)%>'" -->
           <img
-            src="<%=require('./images/map-russia.jpg')%>"
-            onerror="src='<%=require(`./images/map-russia.jpg`)%>'"
+            src="./images/map-russia.jpg"
+            onerror="src='./images/map-russia.jpg'"
             alt="Карточка места"
             class="pop-up__image-fullscreen"
           />
@@ -173,6 +174,52 @@
       </div>
       <!--/pop-up fullscreen-->
 
+      <!-- pop-up delete card -->
+      <div class="pop-up pop-up_delete-card">
+        <div class="pop-up__container">
+          <form class="pop-up__form" name="delete-card" novalidate>
+            <h2 class="pop-up__title pop-up__title_delete-card">Вы уверены?</h2>
+            <button type="submit" class="pop-up__save-btn">Да</button>
+          </form>
+          <button
+            type="button"
+            aria-label="Кнопка закрытия модального окна"
+            title="Закрыть"
+            class="pop-up__close-btn"
+          ></button>
+        </div>
+      </div>
+      <!-- /pop-up delete card -->
+
+            <!--pop-up change avatar-->
+      <div class="pop-up pop-up_change-avatar">
+        <div class="pop-up__container">
+          <form class="pop-up__form" name="change-avatar" novalidate>
+            <h2 class="pop-up__title">Обновить аватар</h2>
+            <div class="pop-up__input-wrapper">
+              <input
+              name="linkToAvatar"
+              required
+              autocomplete="off"
+              placeholder="Ссылка на картинку"
+              type="url"
+              class="pop-up__input-text pop-up__input-text_type_link"
+              id="linkToAvatar"
+            />
+              <span id="linkToAvatar-error" class="error"></span>
+            </div>
+            <button type="submit" class="pop-up__save-btn">Сохранить</button>
+          </form>
+          <button
+            type="button"
+            aria-label="Кнопка закрытия модального окна"
+            title="Закрыть"
+            class="pop-up__close-btn"
+          ></button>
+        </div>
+      </div>
+      <!--/pop-up change avatar-->
+
       <!--*** template-->
       <template class="template-card">
         <article class="element">
@@ -180,8 +227,8 @@
           <!-- src="<%=require('./images/map-russia.jpg')%>" -->
           <!-- onerror="src='<%=require(`./images/map-russia.jpg`)%>'" -->
           <img
-            src="<%=require('./images/map-russia.jpg')%>"
-            onerror="src='<%=require(`./images/map-russia.jpg`)%>'"
+            src="./images/map-russia.jpg'"
+            onerror="src='./images/map-russia.jpg'"
             alt="Карточка места"
             class="element__image"
           />
@@ -193,12 +240,15 @@
           ></button>
           <div class="element__description-wrapper">
             <h2 class="element__title"></h2>
+            <div class="element__of-wrapper-likes">
             <button
               type="button"
               aria-label="Кнопка с отметкой - нравится"
               title="Нравится"
               class="element__like"
             ></button>
+            <p class="element__of-number-likes">1</p>
+          </div>
           </div>
         </article>
       </template>
@@ -206,7 +256,7 @@
     </div>
 
     <!--disable on npm run build -->
-    <!-- <script type="module" src="./pages/index.js"></script> -->
+    <script type="module" src="./pages/index.js"></script>
     <!-- /disable on npm run build -->
   </body>
 </html>

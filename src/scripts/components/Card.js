@@ -27,7 +27,15 @@ export class Card {
   }
 
   _deleteCard(e) {
-    e.target.closest('.element').remove();
+    // e.target.closest('.element').remove();
+
+    // const popupDel = document.querySelector('.pop-up_delete-card');
+    // popupDel.classList.add('pop-up_opened');
+
+    // const popupDel = document.querySelector('.pop-up_change-avatar');
+    // popupDel.classList.add('pop-up_opened');
+
+    console.log('click');
   }
 
   _switchOfLike(e) {
