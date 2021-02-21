@@ -24,8 +24,10 @@
             <div class="profile__avatar-wrapper">
               <!-- ***insert src for img before npm run buld*** -->
               <!-- src="<%=require('./images/avatar.jpg')%>" -->
+              <!-- onerror="src='<%=require(`./images/default-avatar.jpg`)%>'" -->
               <img
                 src="./images/avatar.jpg"
+                onerror="src='./images/default-avatar.jpg'"
                 alt="Аватар"
                 class="profile__avatar"
               />

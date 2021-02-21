@@ -17,20 +17,18 @@ export class Api {
         return Promise.reject(`Ошибка: ${res.status}`);
       })
   }
-  // getUserInfo() {
-  //   return fetch('https://mesto.nomoreparties.co/v1/cohort-20/users/me', {
-  //     method: 'PATCH',
-  //     headers: {
-  //       authorization: 'e4e57aba-b1e6-4fc1-8294-ad6d7d0fcf8d',
-  //       'Content-Type': 'application/json'
-  //     },
-  //      body: JSON.stringify({
-  //      name: 'Marie Skłodowska Curie',
-  //      about: 'Physicist and Chemist'
-  //     })
-  //   }); 
-  // }
-
+  getUserInfo() {
+    return fetch(this._url, {
+      method: 'PATCH',
+      headers: this._headers,
+    
+      body: JSON.stringify({
+        name: 'Marie Skłodowska Curie',
+        about: 'Physicist and Chemist'  
+      })
+    });
+    
+  }
   // getCard() {
   //   return fetch('https://mesto.nomoreparties.co/v1/cohort-20/cards', {
   //     method: 'POST',

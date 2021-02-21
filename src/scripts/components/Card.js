@@ -1,9 +1,10 @@
 export class Card {
-  constructor(data, cardSelector, handleCardClick) {
+  constructor(data, cardSelector, handleCardClick, deleteCard) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
+    this._deleteCard = deleteCard;
   }
 
   _getTemplate() {
@@ -26,17 +27,9 @@ export class Card {
     return this._element;
   }
 
-  _deleteCard(e) {
-    // e.target.closest('.element').remove();
-
-    // const popupDel = document.querySelector('.pop-up_delete-card');
-    // popupDel.classList.add('pop-up_opened');
-
-    // const popupDel = document.querySelector('.pop-up_change-avatar');
-    // popupDel.classList.add('pop-up_opened');
-
-    console.log('click');
-  }
+  // _deleteCard(e) {
+  //   e.target.closest('.element').remove();
+  // }
 
   _switchOfLike(e) {
     e.target.classList.toggle('element__like_active');
