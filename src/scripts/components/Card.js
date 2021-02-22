@@ -40,8 +40,9 @@ export class Card {
       this._handleCardClick(this._name, this._link);
     });
 
-    this._element.querySelector('.element__deleted').addEventListener('click', (e) => {
-      this._deleteCard(e);
+    this._element.querySelector('.element__deleted').addEventListener('click', () => {
+      this._deleteCard();
+      console.log(this._deleteCard);
     });
 
     this._element.querySelector('.element__like').addEventListener('click', (e) => {

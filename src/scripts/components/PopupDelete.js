@@ -3,23 +3,24 @@ import {
 } from './Popup.js';
 
 export class PopupDelete extends Popup {
-  constructor(popupSelector, submitFormCallback) {
+  constructor(popupSelector) {
     super(popupSelector);
+    // this._submitFormCallback = submitFormCallback;
     this._popupDeleteCard = document.querySelector(popupSelector);
-    this._submitFormCallback = submitFormCallback;
     this._form = this._popupDeleteCard.querySelector('.pop-up__form');
   }
 
-  // close() {
-  //   super.close();
-  // }
+  close() {
+    super.close();
+  }
 
-  setEventListeners(){
+  setEventListeners() {
     super.setEventListeners();
-    this._form.addEventListener('submit', (e) => {
-      // e.preventDefault();
-      this._submitFormCallback;
-      console.log('hiiii');
+    this._form.addEventListener('submit', (e) =>  {
+       e.preventDefault();
+       console.log('submit');
+       this._form.close();
+      // this._popupDeleteCard.classList.remove('pop-up_opened');
     });
   }
 }

@@ -89,19 +89,19 @@ editAvatarValidator.enableValidation();
 
 
 /* USER INFO */
-const downloadUserInfo = new Api({
-  url: 'https://mesto.nomoreparties.co/v1/cohort-20/users/me/',
-  headers: {
-    authorization: 'e4e57aba-b1e6-4fc1-8294-ad6d7d0fcf8d',
-    'Content-Type': 'application/json'
-  }
-});
+// const downloadUserInfo = new Api({
+//   url: 'https://mesto.nomoreparties.co/v1/cohort-20/users/me/',
+//   headers: {
+//     authorization: 'e4e57aba-b1e6-4fc1-8294-ad6d7d0fcf8d',
+//     'Content-Type': 'application/json'
+//   }
+// });
 
-downloadUserInfo
-  .getUserInfo()
-  .then((data) => {
-    // console.log(data);
-  })
+// downloadUserInfo
+//   .getUserInfo()
+//   .then((data) => {
+//     console.log(data);
+//   })
 
 const userInfo = new UserInfo({
   userName: '.profile__title',
@@ -116,7 +116,7 @@ const userAvatar = new UserInfo({
 
 /* DOWNLOAD CARDS */
 const downloadСards = new Api({
-  url: 'https://mesto.nomoreparties.co/v1/cohort-20/cards/',
+  url: 'https://mesto.nomoreparties.co/v1/cohort-20/cards',
   headers: {
     authorization: 'e4e57aba-b1e6-4fc1-8294-ad6d7d0fcf8d',
     'Content-Type': 'application/json'
@@ -137,21 +137,28 @@ downloadСards
     );
     cardsList.renderItems();
   })
+  .catch(error => console.log(`${error}`))
+/* /DOWNLOAD CARDS */
+
 
 function createCard(item) {
   const newCard = new Card(item, '.template-card', handleCardClick, deleteCard);
   return newCard.generateCard();
 }
-/* /DOWNLOAD CARDS */
 
 function deleteCard() {
-  const popupDeleteCard = new PopupDelete('.pop-up_delete-card', handleDeleteCard);
+  const popupDeleteCard = new PopupDelete('.pop-up_delete-card');
   popupDeleteCard.setEventListeners();
   popupDeleteCard.open();
 }
 
 
 /* FORMS HANDLERS */
+// function handleDeleteCard(e) {
+//   e.preventDefault();
+//   console.log(popupDeleteCard);
+// }
+
 function handleEditProfile(e, data) {
   e.preventDefault();
   userInfo.setUserInfo(data.name, data.job);
@@ -161,11 +168,26 @@ function handleEditProfile(e, data) {
 function handleAddProfile(e, data) {
   e.preventDefault();
   const addNewCardToHTML = createCard({
-    name: data.place,
-    src: data.linkToImage
+    name: data.name,
+    link: data.link
   });
 
+  const cardsList = new Section({
+    items: data,
+    renderer: (item) => {
+      const cardElement = createCard(item);
+      cardsList.addItem(cardElement);
+    },
+  },
+    containerElements
+  );
+
   cardsList.addNewItem(addNewCardToHTML);
+/////////////////////////////////////////
+  downloadСards
+    .setNewCard(data)
+    .catch(error => console.log(`${error}`))
+
   addForm.close();
 }
 
@@ -173,10 +195,6 @@ function handleEditAvatar(e, data) {
   e.preventDefault();
   userAvatar.setUserAvatar(data.linkToAvatar)
   popupChangeAvatar.close();
-}
-
-function handleDeleteCard(e) {
-  e.preventDefault();
 }
 /* /FORMS HANDLERS */
 

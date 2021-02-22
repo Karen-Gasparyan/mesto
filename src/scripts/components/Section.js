@@ -21,6 +21,13 @@ export class Section {
   addNewItem(element) {
     this._container.prepend(element);
   }
+
+  // _saveItem = (data) => {
+  //   this._api
+  //   .setNewCard(data)
+  //   .then((data) => this.addNewItem(data))
+  //   .catch(error => console.log(error))
+  // }
 }
 
 
