@@ -5,7 +5,7 @@ export class Api {
   }
 
   getInitialCards() {
-    return fetch(this._url, {
+    return fetch(`${this._url}cards`, {
       method: 'GET',
       headers: this._headers
     })
@@ -19,7 +19,7 @@ export class Api {
   }
 
   setNewCard(data) {
-    return fetch(this._url, {
+    return fetch(`${this._url}cards`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify(data)
@@ -35,6 +35,22 @@ export class Api {
       
   }
 
+  setUserAvatar(data) {
+    return fetch(`${this._url}users/me/avatar`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: data.linkToAvatar
+      })
+    })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      // если ошибка, отклоняем промис
+      return Promise.reject(`Ошибка: ${res.status}`);
+    })
+  }
 
 
 

@@ -115,15 +115,15 @@ const userAvatar = new UserInfo({
 
 
 /* DOWNLOAD CARDS */
-const downloadСards = new Api({
-  url: 'https://mesto.nomoreparties.co/v1/cohort-20/cards',
+const api = new Api({
+  url: 'https://mesto.nomoreparties.co/v1/cohort-20/',
   headers: {
     authorization: 'e4e57aba-b1e6-4fc1-8294-ad6d7d0fcf8d',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json; charset=UTF-8'
   }
 });
 
-downloadСards
+api
   .getInitialCards()
   .then((data) => {
       const cardsList = new Section({
@@ -184,15 +184,20 @@ function handleAddProfile(e, data) {
 
   cardsList.addNewItem(addNewCardToHTML);
 /////////////////////////////////////////
-  downloadСards
+  api
     .setNewCard(data)
     .catch(error => console.log(`${error}`))
 
   addForm.close();
 }
-
+// AVATAR?????????????????????????????????????
 function handleEditAvatar(e, data) {
   e.preventDefault();
+
+  api
+  .setUserAvatar(data)
+  .catch(error => console.log(`${error}`))
+
   userAvatar.setUserAvatar(data.linkToAvatar)
   popupChangeAvatar.close();
 }
